@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Solo Leveling",
+        "image": "images/solo.jpg",
+        "description": "Hunters fight to survive in a world full of monsters. Sung Jinwoo, the weakest hunter, gains a unique ability after a near-death experience, allowing him to level up indefinitely.",
+        "download": "https://example.com/solo-download",
+        "category": "ongoing"
+    },
+    {
+        "name": "Jujutsu Kaisen",
+        "image": "images/jujutsu.jpg",
+        "description": "Cursed spirits vs sorcerers in a dark battle. Yuji Itadori swallows a cursed object and becomes the host of Sukuna, a powerful curse, entering the world of Jujutsu Sorcerers.",
+        "download": "https://example.com/jujutsu-download",
+        "category": "ongoing"
+    },
+    {
+        "name": "Attack on Titan",
+        "image": "images/aot.jpg",
+        "description": "The last remnants of humanity fight back against giant, man-eating humanoids known as Titans, living within colossal walls for protection.",
+        "download": "https://example.com/aot-download",
+        "category": "anime"
+    },
+    {
+        "name": "One Piece",
+        "image": "images/demon.jpg",
+        "description": "Follows the adventures of Monkey D. Luffy and his pirate crew, the Straw Hat Pirates, as he searches for the ultimate treasure known as 'One Piece' to become the next Pirate King.",
+        "download": "https://example.com/onepiece-download",
+        "category": "anime"
+    },
+    {
+        "name": "My Hero Academia",
+        "image": "images/mha.jpg",
+        "description": "In a world where superpowers ('Quirks') are common, Izuku Midoriya, born without a Quirk, dreams of becoming a hero and is scouted by the world's greatest hero, All Might.",
+        "download": "https://example.com/mha-download",
+        "category": "anime"
+    },
+    {
+        "name": "Spy x Family",
+        "image": "images/spyxfamily.jpg",
+        "description": "A spy, an assassin, and a telepathic girl who are strangers to each other must pose as a family to execute a mission.",
+        "download": "https://example.com/spyxfamily-download",
+        "category": "ongoing"
+    }
+]

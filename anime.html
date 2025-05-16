@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime - Shadow Garden</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+<body>
+    <div class="cursor"></div>
+
+    <nav>
+        <div class="logo animate__animated animate__fadeInLeft">Shadow Garden</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="ongoing.html">Ongoing</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="anime.html" class="active">Anime</a></li>
+        </ul>
+    </nav>
+
+    <section class="search-section animate__animated animate__fadeInDown">
+        <div class="input-search-container">
+            <input type="text" id="searchInputAnime" class="input-search" placeholder="Search all anime...">
+            <span class="border-span"></span>
+            <i class="fas fa-search search-icon"></i> </div>
+        <div id="searchResultsAnime" class="anime-grid search-results-grid">
+             </div>
+    </section>
+
+    <section class="anime-list animate__animated animate__fadeIn">
+        <h2>📺 All Anime</h2>
+        <div id="animeGridAnime" class="anime-grid main-anime-grid">
+             </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Shadow Garden. All rights reserved.</p>
+        </div>
+        <div id="particles-js"></div>
+    </footer>
+
+    <button id="scrollToTopBtn" class="scroll-to-top-btn"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

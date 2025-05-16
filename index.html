@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shadow Garden - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+
+<body>
+    <div class="video-container">
+        <video autoplay muted loop id="bg-video">
+            <source src="videos/Background1.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        <div class="hero-content">
+            <h1>Welcome to Shadow Garden</h1>
+            <p>Your source for amazing anime content.</p>
+            <a href="anime.html" class="button-53" role="button">Explore Anime</a>
+            <div class="scroll-indicator">
+    <p>Scroll down</p>
+    <i class="fas fa-chevron-down"></i>
+</div>
+
+        </div>
+    </div>
+
+    <nav>
+        <div class="logo animate__animated animate__fadeInLeft">Shadow Garden</div>
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="ongoing.html">Ongoing</a></li>
+            <li><a href="anime.html">Anime</a></li>
+            <li><a href="about.html">About Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <div class="search-bar-header animate__animated animate__fadeInUp">
+            <div class="input-search-container">
+                <input type="text" id="searchInput" class="input-search" placeholder="Search anime...">
+                <span class="border-span"></span>
+                <i class="fas fa-search search-icon"></i> </div>
+        </div>
+        <div id="searchResults" class="anime-grid search-results-grid">
+             </div>
+
+        <section class="trending animate__animated animate__fadeIn">
+            <h2>🔥 Trending Anime</h2>
+            <div id="trendingAnime" class="anime-grid main-anime-grid">
+                </div>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2024 Shadow Garden. All rights reserved.</p>
+            </div>
+            <div id="particles-js"></div>
+        </footer>
+    </div>
+
+    <button id="scrollToTopBtn" class="scroll-to-top-btn"><i class="fas fa-arrow-up"></i></button>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script> <script src="script.js"></script>
+</body>
+
+</html>
