@@ -15,34 +15,45 @@
 
     <nav>
         <div class="logo animate__animated animate__fadeInLeft">Shadow Garden</div>
-        <ul>
+        <div class="mobile-menu-icon">
+            <i class="fas fa-bars"></i> </div>
+        <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="ongoing.html">Ongoing</a></li>
-            <li><a href="about.html">About Us</a></li>
             <li><a href="anime.html" class="active">Anime</a></li>
+             <li><a href="about.html">About Us</a></li>
         </ul>
+         <div class="mobile-menu">
+             <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ongoing.html">Ongoing</a></li>
+                <li><a href="anime.html">Anime</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </div>
     </nav>
 
     <section class="search-section animate__animated animate__fadeInDown">
         <div class="input-search-container">
             <input type="text" id="searchInputAnime" class="input-search" placeholder="Search all anime...">
             <span class="border-span"></span>
-            <i class="fas fa-search search-icon"></i> </div>
+            <i class="fas fa-search search-icon"></i>
+        </div>
         <div id="searchResultsAnime" class="anime-grid search-results-grid">
-             </div>
+            </div>
     </section>
 
     <section class="anime-list animate__animated animate__fadeIn">
         <h2>📺 All Anime</h2>
         <div id="animeGridAnime" class="anime-grid main-anime-grid">
-             </div>
+            </div>
     </section>
 
     <footer>
         <div class="footer-content">
             <p>&copy; 2024 Shadow Garden. All rights reserved.</p>
         </div>
-        <div id="particles-js"></div>
+        <div id="particles-js-footer"></div>
     </footer>
 
     <button id="scrollToTopBtn" class="scroll-to-top-btn"><i class="fas fa-arrow-up"></i></button>

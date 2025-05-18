@@ -7,23 +7,34 @@
     <title>About Us - Shadow Garden</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        xintegrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
-<body class="about-page"> <div class="cursor"></div>
+<body class="about-page">
+    <div class="cursor"></div>
 
     <div id="particles-js" class="full-page-particles"></div>
 
     <nav>
         <div class="logo animate__animated animate__fadeInLeft">Shadow Garden</div>
-        <ul>
+        <div class="mobile-menu-icon">
+            <i class="fas fa-bars"></i> </div>
+        <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="ongoing.html">Ongoing</a></li>
             <li><a href="anime.html">Anime</a></li>
             <li><a href="about.html" class="active">About Us</a></li>
         </ul>
+        <div class="mobile-menu">
+             <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ongoing.html">Ongoing</a></li>
+                <li><a href="anime.html">Anime</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </div>
     </nav>
 
     <section class="about animate__animated animate__fadeIn">
@@ -66,7 +77,8 @@
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script>
         // Initialize EmailJS with your user ID
-        emailjs.init("M9Dzs6ZXnABSforwB"); // Replace with your actual EmailJS user ID
+        // IMPORTANT: Replace "YOUR_USER_ID" with your actual EmailJS user ID
+        emailjs.init("YOUR_USER_ID");
     </script>
     <script src="script.js"></script>
 </body>

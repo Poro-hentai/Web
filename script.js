@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
             noAnimeMessage.textContent = "No anime found matching your criteria.";
             noAnimeMessage.style.textAlign = "center"; // Center the message
             noAnimeMessage.style.gridColumn = "1 / -1"; // Make it span all columns in a grid
+            noAnimeMessage.style.width = "100%"; // Ensure it takes full width in the grid context
             containerElement.appendChild(noAnimeMessage);
             return;
         }
@@ -56,12 +57,12 @@ document.addEventListener("DOMContentLoaded", () => {
             cardBack.className = "anime-card-back";
 
             let downloadButtonHTML = '';
-             // Only show a functional download button if a download link exists
+            // Only show a functional download button if a download link exists
             if (anime.download && anime.download !== '#') {
                 downloadButtonHTML = `<a href="${anime.download}" class="glow-button" target="_blank" rel="noopener noreferrer">Download</a>`;
             } else {
-                 // Show a placeholder button if no download link
-                 downloadButtonHTML = `<a href="#" class="glow-button disabled" onclick="return false;">Download (Link N/A)</a>`;
+                // Show a placeholder button if no download link
+                downloadButtonHTML = `<a href="#" class="glow-button disabled" onclick="return false;">Download (Link N/A)</a>`;
             }
 
             cardBack.innerHTML = `
@@ -84,23 +85,23 @@ document.addEventListener("DOMContentLoaded", () => {
         const mainGridElement = mainGridContainerId ? document.getElementById(mainGridContainerId) : null;
 
         if (!inputElement || !resultsContainer) {
-             console.warn(`Search input or results container not found for: ${inputId}, ${searchResultContainerId}`);
-             return; // Silently return if elements are not on the page
+            console.warn(`Search input or results container not found for: ${inputId}, ${searchResultContainerId}`);
+            return; // Silently return if elements are not on the page
         }
 
         const allAnimeData = await fetchAnime();
-         // Filter the full data by category for the main grid on this page
+        // Filter the full data by category for the main grid on this page
         const mainGridData = category ? allAnimeData.filter(anime => anime.category === category) : allAnimeData;
 
 
         // Function to display initial content (local data for the main grid)
         const displayMainGridContent = () => {
-             // Initially, the search results container is empty
-             resultsContainer.innerHTML = '';
-             // The main grid is always visible
-             if (mainGridElement) {
-                  renderCards(mainGridData, mainGridElement); // Render initial/categorized local data
-             }
+            // Initially, the search results container is empty
+            resultsContainer.innerHTML = '';
+            // The main grid is always visible
+            if (mainGridElement) {
+                renderCards(mainGridData, mainGridElement); // Render initial/categorized local data
+            }
         };
 
         // Display initial content on page load
@@ -128,13 +129,13 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-         // Also handle clearing results when the search input is cleared (e.g., by pressing X)
-         inputElement.addEventListener("search", () => {
-             if (inputElement.value === "") {
+        // Also handle clearing results when the search input is cleared (e.g., by pressing X)
+        inputElement.addEventListener("search", () => {
+            if (inputElement.value === "") {
                 resultsContainer.innerHTML = ''; // Clear search results
-                 // The main grid is already visible
-             }
-         });
+                // The main grid is already visible
+            }
+        });
     };
 
 
@@ -152,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Anime Page: Setup local search and load all anime (or category="anime")
         setupLocalSearch("searchInputAnime", "searchResultsAnime", "animeGridAnime", "anime"); // Use animeGridAnime as main grid, filter by 'anime'
     } else if (currentPage === "about.html") {
-         // About Page: Setup feedback form
+        // About Page: Setup feedback form
         const contactForm = document.getElementById("contactForm");
         if (contactForm) {
             const formMessage = document.getElementById("formMessage");
@@ -165,8 +166,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     return;
                 }
 
-                // Replace with your EmailJS service ID, template ID, and user ID
-                emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this, 'YOUR_USER_ID') // Make sure YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, YOUR_USER_ID are replaced
+                // IMPORTANT: Replace 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', and 'YOUR_USER_ID' with your actual EmailJS credentials
+                emailjs.sendForm('service_v9001qu', 'template_d66w1h7', this, 'M9Dzs6ZXnABSforwB')
                     .then(() => {
                         formMessage.innerText = ""; // Clear any previous messages
                         successAnimation.style.display = "flex"; // Show success animation
@@ -180,81 +181,136 @@ document.addEventListener("DOMContentLoaded", () => {
                         successAnimation.style.display = "none"; // Hide success animation on error
                     });
             });
-             // EmailJS initialization is now done globally in the HTML head or before this script runs.
-             // Ensure you have replaced 'YOUR_USER_ID' in about.html script tag.
+            // EmailJS initialization is done in the about.html script tag before this script runs.
+            // Ensure you have replaced 'YOUR_USER_ID' in about.html script tag.
         }
 
-         // Initialize particles for the full background on the About page
-         const fullPageParticlesContainer = document.getElementById("particles-js");
-         if (fullPageParticlesContainer && typeof particlesJS !== 'undefined') {
-             particlesJS("particles-js", {
-                 particles: {
-                     number: { value: 80, density: { enable: true, value_area: 1000 } },
-                     color: { value: "#9f6bff" },
-                     shape: { type: "circle" },
-                     opacity: { value: 0.5, random: true },
-                     size: { value: 3, random: true },
-                     line_linked: {
-                         enable: true,
-                         distance: 150,
-                         color: "#9f6bff",
-                         opacity: 0.4,
-                         width: 1
-                     },
-                     move: {
-                         enable: true,
-                         speed: 2,
-                         direction: "none",
-                         random: true,
-                         straight: false,
-                         out_mode: "out",
-                         bounce: false
-                     }
-                 },
-                 interactivity: {
-                     detect_on: "canvas",
-                     events: {
-                         onhover: { enable: true, mode: "grab" },
-                         onclick: { enable: false, mode: "push" },
-                         resize: true
-                     },
-                     modes: {
-                         grab: { distance: 120, line_linked: { opacity: 0.8 } },
-                         bubble: { distance: 250, size: 25, duration: 2, opacity: 0.9 },
-                         repulse: { distance: 200, duration: 0.4 },
-                         push: { particles_nb: 4 },
-                         remove: { particles_nb: 2 }
-                     }
-                 },
-                 retina_detect: true
-             });
-         } else if (fullPageParticlesContainer && typeof particlesJS === 'undefined') {
-             console.warn("particles.js library is not loaded for the full page background.");
-         }
+        // Initialize particles for the full background on the About page
+        const fullPageParticlesContainer = document.getElementById("particles-js");
+        if (fullPageParticlesContainer && typeof particlesJS !== 'undefined') {
+            particlesJS("particles-js", {
+                particles: {
+                    number: {
+                        value: 80,
+                        density: {
+                            enable: true,
+                            value_area: 1000
+                        }
+                    },
+                    color: {
+                        value: "#9f6bff"
+                    },
+                    shape: {
+                        type: "circle"
+                    },
+                    opacity: {
+                        value: 0.5,
+                        random: true
+                    },
+                    size: {
+                        value: 3,
+                        random: true
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: "#9f6bff",
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: "none",
+                        random: true,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: "grab"
+                        },
+                        onclick: {
+                            enable: false,
+                            mode: "push"
+                        },
+                        resize: true
+                    },
+                    modes: {
+                        grab: {
+                            distance: 120,
+                            line_linked: {
+                                opacity: 0.8
+                            }
+                        },
+                        bubble: {
+                            distance: 250,
+                            size: 25,
+                            duration: 2,
+                            opacity: 0.9
+                        },
+                        repulse: {
+                            distance: 200,
+                            duration: 0.4
+                        },
+                        push: {
+                            particles_nb: 4
+                        },
+                        remove: {
+                            particles_nb: 2
+                        }
+                    }
+                },
+                retina_detect: true
+            });
+        } else if (fullPageParticlesContainer && typeof particlesJS === 'undefined') {
+            console.warn("particles.js library is not loaded for the full page background.");
+        }
 
     }
 
     // Particle.js config (Footer) - Initialize particles only for the footer container on other pages
-    const footerParticlesContainer = document.getElementById("particles-js"); // Still using the same ID for other pages
+    const footerParticlesContainer = document.getElementById("particles-js-footer");
     // Check if it's NOT the about page and the container exists
     if (currentPage !== "about.html" && footerParticlesContainer && typeof particlesJS !== 'undefined') {
-        particlesJS("particles-js", { // Initialize particles for the footer container
+        particlesJS("particles-js-footer", { // Initialize particles for the footer container
             particles: {
-                number: { value: 80, density: { enable: true, value_area: 1000 } }, // Increased particles and area
-                color: { value: "#9f6bff" },
-                shape: { type: "circle" },
-                opacity: { value: 0.5, random: true },
-                size: { value: 3, random: true }, // Slightly larger particles
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 1000
+                    }
+                },
+                color: {
+                    value: "#9f6bff"
+                },
+                shape: {
+                    type: "circle"
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true
+                },
+                size: {
+                    value: 3,
+                    random: true
+                },
                 line_linked: {
                     enable: true,
-                    distance: 150, // Increased distance
+                    distance: 150,
                     color: "#9f6bff",
-                    opacity: 0.4, // Slightly more opaque lines
+                    opacity: 0.4,
                     width: 1
                 },
                 move: {
                     enable: true,
-                    speed: 2, // Slightly faster movement
+                    speed: 2,
                     direction: "none",
                     random: true,
                     straight: false,
@@ -265,16 +321,39 @@ document.addEventListener("DOMContentLoaded", () => {
             interactivity: {
                 detect_on: "canvas",
                 events: {
-                    onhover: { enable: true, mode: "grab" },
-                    onclick: { enable: false, mode: "push" },
+                    onhover: {
+                        enable: true,
+                        mode: "grab"
+                    },
+                    onclick: {
+                        enable: false,
+                        mode: "push"
+                    },
                     resize: true
                 },
                 modes: {
-                    grab: { distance: 120, line_linked: { opacity: 0.8 } }, // Increased grab distance and opacity
-                    bubble: { distance: 250, size: 25, duration: 2, opacity: 0.9 }, // Larger and more opaque bubbles
-                    repulse: { distance: 200, duration: 0.4 }, // Increased repulse distance
-                    push: { particles_nb: 4 },
-                    remove: { particles_nb: 2 }
+                    grab: {
+                        distance: 120,
+                        line_linked: {
+                            opacity: 0.8
+                        }
+                    },
+                    bubble: {
+                        distance: 250,
+                        size: 25,
+                        duration: 2,
+                        opacity: 0.9
+                    },
+                    repulse: {
+                        distance: 200,
+                        duration: 0.4
+                    },
+                    push: {
+                        particles_nb: 4
+                    },
+                    remove: {
+                        particles_nb: 2
+                    }
                 }
             },
             retina_detect: true
@@ -313,4 +392,16 @@ document.addEventListener("DOMContentLoaded", () => {
             behavior: "smooth" // Smooth scrolling animation
         });
     });
+
+    // --- Mobile Menu Toggle Functionality ---
+    const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    if (mobileMenuIcon && mobileMenu) {
+        mobileMenuIcon.addEventListener('click', () => {
+            mobileMenu.classList.toggle('is-open');
+        });
+    } else {
+        console.warn("Mobile menu icon or container not found.");
+    }
 });

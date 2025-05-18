@@ -14,7 +14,7 @@ body {
 }
 
 nav {
-    background: rgba(0, 0, 0, 0.8); /* Slightly more opaque */
+    background: rgba(0, 0, 0, 0.8);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -22,43 +22,109 @@ nav {
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(159, 107, 255, 0.3); /* Subtle shadow */
+    box-shadow: 0 2px 10px rgba(159, 107, 255, 0.3);
+    flex-wrap: wrap;
 }
 
-nav ul {
+nav .logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    /* Changed font-family to Bebas Neue */
+    font-family: cursive; /* Using Bebas Neue font */
+    /* Changed color to white */
+    color: #ffffff; /* White color for the logo */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* Subtle white glow */
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+nav .logo:hover {
+    transform: scale(1.05);
+}
+
+/* Standard navigation links (visible on desktop) */
+nav .nav-links {
     list-style: none;
     display: flex;
     gap: 1.5em;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0;
 }
 
-nav ul li a {
+nav .nav-links li a {
     text-decoration: none;
     color: #fff;
     font-weight: 600;
-    transition: color 0.3s ease, transform 0.2s ease; /* Added transform transition */
+    transition: color 0.3s ease, transform 0.2s ease;
+    padding: 0.5em 0;
 }
 
-nav ul li a:hover {
+nav .nav-links li a:hover {
     color: #cba2ff;
-    transform: translateY(-2px); /* Subtle hover effect */
+    transform: translateY(-2px);
 }
 
-nav ul li a.active {
+nav .nav-links li a.active {
     color: #9f6bff;
-    border-bottom: 2px solid #9f6bff; /* Active indicator */
+    border-bottom: 2px solid #9f6bff;
     padding-bottom: 2px;
 }
 
-.logo {
-    font-size: 1.8em; /* Slightly larger */
-    font-weight: bold;
+/* Mobile menu icon (hidden on desktop) */
+.mobile-menu-icon {
+    display: none; /* Hidden by default */
+    font-size: 1.8em;
     color: #9f6bff;
-    text-shadow: 0 0 5px #9f6bff; /* Subtle glow */
-    transition: transform 0.3s ease;
+    cursor: pointer;
+    z-index: 1001; /* Ensure it's above the nav */
 }
 
-.logo:hover {
-    transform: scale(1.05); /* Scale effect on hover */
+/* Mobile menu container (hidden on desktop) */
+.mobile-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%; /* Position below the nav */
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 5px 10px rgba(159, 107, 255, 0.3);
+    z-index: 999; /* Below the icon but above content */
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out; /* Smooth transition */
+    max-height: 0; /* Start closed */
+}
+
+.mobile-menu.is-open {
+    max-height: 300px; /* Adjust based on menu content height */
+}
+
+.mobile-menu ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em 0;
+}
+
+.mobile-menu ul li {
+    width: 100%;
+    text-align: center;
+    padding: 0.8em 0;
+}
+
+.mobile-menu ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1em;
+    display: block; /* Make links fill the width */
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.mobile-menu ul li a:hover {
+    color: #cba2ff;
+    background-color: rgba(159, 107, 255, 0.1);
 }
 
 
@@ -68,13 +134,14 @@ nav ul li a.active {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh; /* Full viewport height */
+    height: 100vh;
     overflow: hidden;
     z-index: -1;
-    display: flex; /* Optional but helps ensure alignment */
+    display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .video-container::after {
     content: "";
     position: absolute;
@@ -83,62 +150,69 @@ nav ul li a.active {
     width: 100%;
     height: 100%;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
-    z-index: 1; /* Ensure it appears above the video but below the text */
+    z-index: 1;
 }
-
 
 #bg-video {
     min-width: 100%;
     min-height: 100%;
+    width: auto;
+    height: auto;
     object-fit: cover;
 }
 
 /* Hero Content */
-/* For Hero Content Centering */
 .hero-content {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2; /* Ensure it's above the gradient */
+    z-index: 2;
     text-align: center;
     color: #fff;
+    padding: 0 1em;
+    width: 100%;
+    max-width: 800px;
 }
 
-
 .hero-content h1 {
-    font-size: 3.5em; /* Larger heading */
+    font-size: 2.5em;
+    font-family: algerian;
     margin-bottom: 0.5em;
     color: #ffffff;
     letter-spacing: 1px;
+    word-break: break-word;
 }
 
 .hero-content p {
-    font-size: 1.3em; /* Larger paragraph */
-    margin-bottom: 2em; /* More space below paragraph */
+    font-size: 1.3em;
+    font-family: cursive;
+    margin-bottom: 2em;
     color: #eee;
+    word-break: break-word;
 }
 
 /* Main Content */
 .main-content {
-    margin-top: calc(100vh + 60px); /* Adjust based on hero section height and nav height */
+    margin-top: calc(100vh + 60px);
     position: relative;
     z-index: 1;
-    background-color: #000; /* Ensure background is black below hero */
-    padding-bottom: 4em; /* Add padding at the bottom */
+    background-color: #000;
+    padding-bottom: 4em;
 }
 
 /* Search Bars */
-.search-bar-header, .search-section {
+.search-bar-header,
+.search-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2em 1em 0.5em 1em; /* Increased top/bottom padding, reduced bottom */
-    background: rgba(0, 0, 0, 0.7); /* Slightly more opaque */
+    padding: 2em 1em 0.5em 1em;
+    background: rgba(0, 0, 0, 0.7);
     margin-bottom: 1em;
     position: relative;
     z-index: 10;
-    box-shadow: 0 2px 10px rgba(159, 107, 255, 0.2); /* Subtle shadow */
+    box-shadow: 0 2px 10px rgba(159, 107, 255, 0.2);
 }
 
 .search-section {
@@ -147,20 +221,20 @@ nav ul li a.active {
 
 .input-search-container {
     position: relative;
-    width: 90%; /* Increased width */
-    max-width: 600px; /* Increased max-width */
+    width: 90%;
+    max-width: 600px;
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.08); /* Slightly lighter background */
-    padding: 3px; /* Increased padding for border effect */
+    background-color: rgba(255, 255, 255, 0.08);
+    padding: 3px;
     transition: background-color 0.3s ease;
-    display: flex; /* Use flexbox for input and icon */
+    display: flex;
     align-items: center;
-    overflow: hidden; /* Hide overflowing border spans initially */
+    overflow: hidden;
 }
 
 .input-search-container .input-search {
-    flex-grow: 1; /* Allow input to take available space */
-    padding: 1em 1.5em 1em 3em; /* Increased padding, space for icon */
+    flex-grow: 1;
+    padding: 1em 1.5em 1em 3em;
     font-size: 1.1em;
     border: none;
     border-radius: 8px;
@@ -169,20 +243,20 @@ nav ul li a.active {
     outline: none;
     position: relative;
     z-index: 1;
+    width: 100%;
 }
 
 .input-search-container .input-search::placeholder {
-    color: #bbb; /* Lighter placeholder color */
+    color: #bbb;
 }
 
 .search-icon {
     position: absolute;
-    left: 1em; /* Position icon inside */
+    left: 1em;
     color: #9f6bff;
     font-size: 1.2em;
-    z-index: 2; /* Ensure icon is above input */
+    z-index: 2;
 }
-
 
 /* Animated Border */
 .input-search-container::before,
@@ -196,65 +270,47 @@ nav ul li a.active {
     z-index: 0;
 }
 
-.input-search-container::before {
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-}
-
-.input-search-container::after {
-    top: 0;
-    right: 0;
-    width: 2px;
-    height: 0;
-}
-
-.input-search-container .border-span::before {
-    bottom: 0;
-    right: 0;
-    width: 0;
-    height: 2px;
-}
-
-.input-search-container .border-span::after {
-    bottom: 0;
-    left: 0;
-    width: 2px;
-    height: 0;
-}
-
 .input-search-container:focus-within {
-    background-color: rgba(255, 255, 255, 0.1); /* More visible focus background */
-    box-shadow: 0 0 15px rgba(159, 107, 255, 0.5); /* Glow effect on focus */
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 15px rgba(159, 107, 255, 0.5);
 }
 
-.input-search-container:focus-within::before { width: 100%; }
-.input-search-container:focus-within::after { height: 100%; transition-delay: 0.1s; }
-.input-search-container:focus-within .border-span::before { width: 100%; transition-delay: 0.2s; }
-.input-search-container:focus-within .border-span::after { height: 100%; transition-delay: 0.3s; }
+.input-search-container:focus-within::before {
+    width: 100%;
+}
 
+.input-search-container:focus-within::after {
+    height: 100%;
+    transition-delay: 0.1s;
+}
+
+.input-search-container:focus-within .border-span::before {
+    width: 100%;
+    transition-delay: 0.2s;
+}
+
+.input-search-container:focus-within .border-span::after {
+    height: 100%;
+    transition-delay: 0.3s;
+}
 
 /* Search Results Grid */
 .search-results-grid {
-    /* Styles for the grid that shows search results */
-    /* Add spacing below search results before the main list */
     margin-bottom: 2em;
 }
 
 .search-results-grid p {
-     text-align: center;
-     color: #ccc;
-     grid-column: 1 / -1;
-     font-size: 1.1em;
+    text-align: center;
+    color: #ccc;
+    grid-column: 1 / -1;
+    font-size: 1.1em;
 }
-
 
 /* Anime Grid (Main Lists) */
 .anime-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1em; /* Adjusted spacing between cards */
+    gap: 1em;
     padding: 1em;
     width: 100%;
     max-width: 1200px;
@@ -269,23 +325,22 @@ nav ul li a.active {
     perspective: 1000px;
     overflow: visible;
     margin: 0 auto;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added transitions */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .anime-card:hover {
-     transform: translateY(-5px); /* Lift card slightly on hover */
-     box-shadow: 0px 8px 20px rgba(159, 107, 255, 0.4); /* Enhanced shadow on hover */
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(159, 107, 255, 0.4);
 }
-
 
 .anime-card-inner {
     position: relative;
     width: 100%;
     height: 100%;
     text-align: center;
-    transition: transform 0.7s cubic-bezier(0.4, 0.0, 0.2, 1); /* Smoother flip transition */
+    transition: transform 0.7s cubic-bezier(0.4, 0.0, 0.2, 1);
     transform-style: preserve-3d;
-    box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
     border-radius: 12px;
     background: #1a1a1a;
 }
@@ -318,9 +373,9 @@ nav ul li a.active {
     width: 100%;
     height: 180px;
     object-fit: cover;
-    border-radius: 8px; /* Rounded corners on image */
+    border-radius: 8px;
     margin-bottom: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .anime-card-front h3 {
@@ -329,7 +384,7 @@ nav ul li a.active {
     color: #f0f0f0;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /* Prevent long titles from breaking layout */
+    text-overflow: ellipsis;
     width: 100%;
     text-align: center;
 }
@@ -339,13 +394,12 @@ nav ul li a.active {
     color: #aaa;
     margin-bottom: 0.5em;
     text-align: center;
-    flex-grow: 1; /* Allow description to take space */
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* Limit description to 3 lines */
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    /* Added line-clamp for standard CSS */
     line-clamp: 3;
 }
 
@@ -361,13 +415,13 @@ nav ul li a.active {
     color: white;
     transform: rotateY(180deg);
     justify-content: center;
-    padding: 20px; /* Increased padding */
+    padding: 20px;
 }
 
 .anime-card-back h3 {
-    margin-bottom: 0.8em; /* More space below title */
+    margin-bottom: 0.8em;
     color: #cba2ff;
-    font-size: 1.3em; /* Slightly larger title */
+    font-size: 1.3em;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -376,37 +430,35 @@ nav ul li a.active {
 }
 
 .anime-card-back p {
-    font-size: 0.95em; /* Slightly larger description text */
+    font-size: 0.95em;
     color: #e0e0e0;
-    padding: 0 5px; /* Reduced horizontal padding */
-    max-height: 120px; /* Adjusted max height */
+    padding: 0 5px;
+    max-height: 120px;
     overflow-y: auto;
-    margin-bottom: 1em; /* Space before button */
+    margin-bottom: 1em;
 
     /* Custom Scrollbar Styles */
-    /* For Webkit browsers (Chrome, Safari) */
     &::-webkit-scrollbar {
-        width: 8px; /* Width of the scrollbar */
+        width: 8px;
     }
 
     &::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.1); /* Color of the track */
+        background: rgba(255, 255, 255, 0.1);
         border-radius: 4px;
     }
 
     &::-webkit-scrollbar-thumb {
-        background: #9f6bff; /* Color of the scrollbar thumb */
+        background: #9f6bff;
         border-radius: 4px;
         transition: background 0.3s ease;
     }
 
     &::-webkit-scrollbar-thumb:hover {
-        background: #cba2ff; /* Color on hover */
+        background: #cba2ff;
     }
 
-    /* For Firefox */
-    scrollbar-width: thin; /* "auto" or "thin" */
-    scrollbar-color: #9f6bff rgba(255, 255, 255, 0.1); /* thumb track */
+    scrollbar-width: thin;
+    scrollbar-color: #9f6bff rgba(255, 255, 255, 0.1);
 }
 
 /* Glow Button */
@@ -414,15 +466,15 @@ nav ul li a.active {
     display: inline-block;
     background-color: #9f6bff;
     color: white;
-    padding: 0.8em 1.8em; /* Increased padding */
+    padding: 0.8em 1.8em;
     border-radius: 8px;
     cursor: pointer;
-    box-shadow: 0 0 10px #9f6bff; /* More prominent shadow */
-    transition: 0.3s ease, transform 0.2s ease; /* Added transform transition */
+    box-shadow: 0 0 10px #9f6bff;
+    transition: 0.3s ease, transform 0.2s ease;
     font-weight: 600;
     text-decoration: none;
     margin-top: 1em;
-    border: none; /* Ensure no default border */
+    border: none;
     position: relative;
     overflow: hidden;
 }
@@ -445,41 +497,23 @@ nav ul li a.active {
     opacity: 0;
 }
 
-
 .glow-button:hover {
     background-color: #cba2ff;
-    box-shadow: 0 0 20px #cba2ff; /* Enhanced hover shadow */
-    transform: translateY(-3px); /* Lift button slightly */
+    box-shadow: 0 0 20px #cba2ff;
+    transform: translateY(-3px);
 }
 
 .glow-button.disabled {
-    opacity: 0.6; /* Slightly less opaque */
+    opacity: 0.6;
     cursor: not-allowed;
     box-shadow: none;
-    background-color: #555; /* Darker background for disabled */
-    transform: none; /* No transform for disabled */
+    background-color: #555;
+    transform: none;
 }
 
-/* Button-53 Style (Home Page Button) */
-.button-53 {
-    background-color: #3ada;
-    border-radius: 16px;
-    color: #fff;
-    font-size: 16px; /* Slightly larger font */
-    font-weight: 700;
-    padding: 14px 20px; /* Increased padding */
-    text-transform: uppercase;
-    letter-spacing: 1px; /* Increased letter spacing */
-    transition: filter 0.2s, transform 0.3s ease; /* Added transform transition */
-    position: relative;
-    z-index: 1;
-    text-decoration: none; /* Ensure no underline */
-    display: inline-block; /* Ensure padding works */
-    box-shadow: 0 4px 15px rgba(58, 218, 170, 0.4); /* Add shadow */
-}
-
-.button-53 {
-    background-color: #007bff; /* Simple blue color */
+/* Button-53 Style (Home Page Button) - Removed as requested */
+/* .button-53 {
+    background-color: #007bff;
     color: white;
     font-size: 1rem;
     font-weight: 600;
@@ -489,11 +523,12 @@ nav ul li a.active {
     text-decoration: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    display: inline-block;
 }
 
 .button-53:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
+    background-color: #0056b3;
+} */
 
 
 /* About Us Page */
@@ -501,18 +536,17 @@ nav ul li a.active {
     padding: 4em 2em;
     text-align: center;
     max-width: 800px;
-    margin: 2em auto; /* Added top margin */
-    background: rgba(0, 0, 0, 0.7); /* Background for the section */
+    margin: 2em auto;
+    background: rgba(0, 0, 0, 0.7);
     border-radius: 12px;
-    /* Removed box-shadow: 0 0 20px rgba(159, 107, 255, 0.3); */
-    position: relative; /* Needed for z-index */
-    z-index: 1; /* Ensure content is above particles */
+    position: relative;
+    z-index: 1;
 }
 
 .about h2 {
-    margin-bottom: 1.5em; /* More space below heading */
+    margin-bottom: 1.5em;
     color: #9f6bff;
-    font-size: 2.2em; /* Larger heading */
+    font-size: 2.2em;
     text-shadow: 0 0 8px rgba(159, 107, 255, 0.5);
 }
 
@@ -520,19 +554,19 @@ nav ul li a.active {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 3em; /* More space below form */
+    margin-bottom: 3em;
     padding: 1.5em;
-    background: rgba(255, 255, 255, 0.05); /* Subtle form background */
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
 }
 
 .about form input,
 .about form textarea {
     width: 100%;
-    max-width: 450px; /* Increased max width */
-    padding: 1em; /* Increased padding */
-    margin-bottom: 1.2em; /* More space between fields */
-    border: 1px solid #555; /* Subtle border */
+    max-width: 450px;
+    padding: 1em;
+    margin-bottom: 1.2em;
+    border: 1px solid #555;
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.1);
     color: #fff;
@@ -542,18 +576,18 @@ nav ul li a.active {
 
 .about form input:focus,
 .about form textarea:focus {
-    box-shadow: 0 0 12px rgba(159, 107, 255, 0.7); /* More prominent focus shadow */
+    box-shadow: 0 0 12px rgba(159, 107, 255, 0.7);
     border-color: #9f6bff;
 }
 
 .about form textarea {
-    min-height: 150px; /* Increased textarea height */
-    resize: vertical; /* Allow vertical resizing */
+    min-height: 150px;
+    resize: vertical;
 }
 
 .about form p#formMessage {
     color: #ff6b81;
-    margin-top: 1em; /* More space above message */
+    margin-top: 1em;
     font-weight: bold;
 }
 
@@ -562,22 +596,27 @@ nav ul li a.active {
     flex-direction: column;
     align-items: center;
     color: #2ecc71;
-    margin-top: 1.5em; /* More space above animation */
+    margin-top: 1.5em;
     font-size: 1.2em;
 }
 
 .success-animation i {
-    font-size: 3.5em; /* Larger icon */
+    font-size: 3.5em;
     margin-bottom: 0.5em;
-    animation: pulse 1s infinite; /* Add pulse animation */
+    animation: pulse 1s infinite;
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
-
 
 /* FAQ & Telegram */
 .faq,
@@ -585,19 +624,19 @@ nav ul li a.active {
     margin-top: 3em;
     text-align: left;
     padding: 1.5em;
-    background: rgba(255, 255, 255, 0.05); /* Subtle background */
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
-    margin-bottom: 2em; /* Space below sections */
-    position: relative; /* Needed for z-index */
-    z-index: 1; /* Ensure content is above particles */
+    margin-bottom: 2em;
+    position: relative;
+    z-index: 1;
 }
 
 .faq h3,
 .telegram-info h3 {
     color: #9f6bff;
-    margin-bottom: 0.8em; /* More space below heading */
-    font-size: 1.8em; /* Larger heading */
-    border-bottom: 2px solid rgba(159, 107, 255, 0.5); /* Subtle separator */
+    margin-bottom: 0.8em;
+    font-size: 1.8em;
+    border-bottom: 2px solid rgba(159, 107, 255, 0.5);
     padding-bottom: 0.5em;
 }
 
@@ -605,7 +644,7 @@ nav ul li a.active {
 .telegram-info p {
     margin-bottom: 1em;
     color: #ccc;
-    line-height: 1.6; /* Improved readability */
+    line-height: 1.6;
 }
 
 .telegram-info a {
@@ -623,11 +662,11 @@ nav ul li a.active {
 footer {
     background: #000;
     color: #fff;
-    padding: 3em 2em; /* Increased padding */
+    padding: 3em 2em;
     text-align: center;
     position: relative;
     overflow: hidden;
-    margin-top: 4em; /* Increased top margin */
+    margin-top: 4em;
 }
 
 footer .footer-content {
@@ -638,7 +677,7 @@ footer .footer-content {
 }
 
 /* Particles for Footer (default) */
-#particles-js {
+#particles-js-footer {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -649,12 +688,12 @@ footer .footer-content {
 
 /* Particles for About Page (full screen) */
 body.about-page #particles-js {
-    position: fixed; /* Changed to fixed */
-    width: 100vw; /* Use viewport width */
-    height: 100vh; /* Use viewport height */
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
     top: 0;
     left: 0;
-    z-index: -2; /* Lower z-index so content is above */
+    z-index: -2;
 }
 
 /* Hide footer particles on about page */
@@ -662,25 +701,9 @@ body.about-page #particles-js-footer {
     display: none;
 }
 
-
-/* Removed Custom Cursor Styles */
-/* .cursor {
-    position: fixed;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background-color: #cba2ff;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease-out;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-} */
-
 /* Scroll to Top Button */
 .scroll-to-top-btn {
-    display: none; /* Hidden by default */
+    display: none;
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -688,17 +711,17 @@ body.about-page #particles-js-footer {
     font-size: 1.5em;
     border: none;
     outline: none;
-    background-color: rgba(159, 107, 255, 0.7); /* Semi-transparent purple */
+    background-color: rgba(159, 107, 255, 0.7);
     color: white;
     cursor: pointer;
     padding: 10px 15px;
     border-radius: 50%;
     transition: background-color 0.3s ease, opacity 0.5s ease;
-    opacity: 0; /* Start hidden */
+    opacity: 0;
 }
 
 .scroll-to-top-btn:hover {
-    background-color: #9f6bff; /* Solid purple on hover */
+    background-color: #9f6bff;
     opacity: 1;
 }
 
@@ -707,82 +730,22 @@ body.about-page #particles-js-footer {
     opacity: 1;
 }
 
-
 /* Section Titles */
 section h2 {
     text-align: center;
-    font-size: 2.5em; /* Larger section titles */
+    font-size: 2.5em;
     color: #cba2ff;
     margin-bottom: 1em;
     text-transform: uppercase;
-    letter-spacing: 1.5px; /* Increased spacing */
-    text-shadow: 0 0 10px rgba(203, 162, 255, 0.5); /* Glow effect */
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 10px rgba(203, 162, 255, 0.5);
 }
 
 .anime-list h2 {
-    margin-top: 2em; /* Increased top margin for anime list */
+    margin-top: 2em;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        padding: 1em;
-    }
-
-    nav ul {
-        margin-top: 1em;
-        gap: 1em;
-    }
-
-    .hero-content h1 {
-        font-size: 2.5em;
-    }
-
-    .hero-content p {
-        font-size: 1em;
-    }
-
-    .search-bar-header, .search-section {
-        padding: 1.5em 0.5em 0.5em 0.5em; /* Adjusted padding */
-    }
-
-    .input-search-container {
-        width: 95%;
-    }
-
-    .anime-grid {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Smaller cards on mobile */
-        gap: 0.8em; /* Reduced gap */
-    }
-
-    .anime-card {
-        width: 180px;
-        height: 280px;
-    }
-
-    .anime-card-front img {
-        height: 150px;
-    }
-
-    .about {
-        padding: 2em 1em;
-    }
-
-    .about h2 {
-        font-size: 1.8em;
-    }
-
-    .faq h3,
-    .telegram-info h3 {
-        font-size: 1.4em;
-    }
-
-    section h2 {
-        font-size: 2em;
-    }
-    
-}
+/* Scroll Indicator */
 .scroll-indicator {
     display: flex;
     flex-direction: column;
@@ -809,7 +772,11 @@ section h2 {
 
 /* Bounce animation for the arrow */
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateY(0);
     }
     40% {
@@ -822,10 +789,266 @@ section h2 {
 
 /* Fade animation */
 @keyframes fade-in-out {
-    0%, 100% {
+    0%,
+    100% {
         opacity: 1;
     }
     50% {
         opacity: 0.5;
+    }
+}
+
+
+/* --- Responsive Adjustments --- */
+
+/* Tablet and smaller screens */
+@media (max-width: 992px) {
+    nav {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1em 1.5em;
+    }
+
+    nav .nav-links {
+        display: none;
+    }
+
+    .mobile-menu-icon {
+        display: block;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    .hero-content h1 {
+        font-size: 3em;
+    }
+
+    .hero-content p {
+        font-size: 1.2em;
+    }
+
+    .anime-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 0.8em;
+    }
+
+    .anime-card {
+        width: 200px;
+        height: 300px;
+    }
+
+    .anime-card-front img {
+        height: 160px;
+    }
+
+    .about {
+        padding: 3em 1.5em;
+    }
+
+    .about h2 {
+        font-size: 2em;
+    }
+
+    .faq h3,
+    .telegram-info h3 {
+        font-size: 1.6em;
+    }
+
+    section h2 {
+        font-size: 2.2em;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 576px) {
+    nav {
+        padding: 0.8em;
+    }
+
+    nav .logo {
+        font-size: 1.5em;
+    }
+
+    .mobile-menu-icon {
+         font-size: 1.5em;
+    }
+
+
+    .hero-content h1 {
+        font-size: 2em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .main-content {
+        margin-top: calc(100vh + 80px);
+    }
+
+    .search-bar-header,
+    .search-section {
+        padding: 1em 0.5em;
+    }
+
+    .input-search-container {
+        width: 100%;
+    }
+
+    .input-search-container .input-search {
+         padding: 0.8em 1em 0.8em 2.5em;
+         font-size: 1em;
+    }
+
+     .search-icon {
+        left: 0.8em;
+        font-size: 1em;
+    }
+
+    .anime-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.5em;
+        padding: 0.5em;
+    }
+
+    .anime-card {
+        width: 150px;
+        height: 250px;
+        margin: 0 auto;
+    }
+
+    .anime-card-front img {
+        height: 120px;
+    }
+
+    .anime-card-front h3 {
+        font-size: 1em;
+    }
+
+    .anime-card-front .front-description {
+        font-size: 0.7em;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+    }
+
+    .anime-card-back h3 {
+        font-size: 1.1em;
+    }
+
+    .anime-card-back p {
+        font-size: 0.8em;
+        max-height: 80px;
+    }
+
+    .glow-button {
+        padding: 0.6em 1.2em;
+        font-size: 0.9em;
+    }
+
+    .button-53 {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    .about {
+        padding: 1.5em 0.8em;
+    }
+
+    .about h2 {
+        font-size: 1.5em;
+    }
+
+    .about form input,
+    .about form textarea {
+        padding: 0.8em;
+        margin-bottom: 1em;
+    }
+
+    .about form textarea {
+        min-height: 100px;
+    }
+
+    .success-animation i {
+        font-size: 2.5em;
+    }
+
+    .faq h3,
+    .telegram-info h3 {
+        font-size: 1.2em;
+    }
+
+    .faq p,
+    .telegram-info p {
+        font-size: 0.9em;
+    }
+
+    section h2 {
+        font-size: 1.8em;
+    }
+
+    footer {
+        padding: 2em 1em;
+    }
+
+    .scroll-to-top-btn {
+        font-size: 1.2em;
+        padding: 8px 12px;
+    }
+}
+
+/* Extra small mobile screens */
+@media (max-width: 360px) {
+    .hero-content h1 {
+        font-size: 1.8em;
+    }
+
+    .hero-content p {
+        font-size: 0.9em;
+    }
+
+     .anime-grid {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    }
+
+    .anime-card {
+        width: 130px;
+        height: 230px;
+    }
+
+    .anime-card-front img {
+        height: 100px;
+    }
+
+    .anime-card-front h3 {
+        font-size: 0.9em;
+    }
+
+    .anime-card-back h3 {
+        font-size: 1em;
+    }
+
+    .glow-button {
+        padding: 0.5em 1em;
+        font-size: 0.8em;
+    }
+
+    .button-53 {
+         padding: 6px 12px;
+         font-size: 0.8em;
+    }
+
+    .about h2 {
+        font-size: 1.3em;
+    }
+
+    .faq h3,
+    .telegram-info h3 {
+        font-size: 1.1em;
+    }
+
+     section h2 {
+        font-size: 1.6em;
     }
 }
