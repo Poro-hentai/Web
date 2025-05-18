@@ -7,49 +7,34 @@
     <title>Shadow Garden - Home</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        xintegrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <style>
-        .iframe-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-            z-index: -1;
-        }
-
-        .iframe-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            object-fit: cover;
-        }
-    </style>
 </head>
 
 <body>
-    <div class="iframe-container">
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ" allowfullscreen></iframe>
-    </div>
-    <div class="hero-content">
-        <h1>Welcome to Shadow Garden</h1>
-        <p>Your source for amazing anime content.</p>
-        <div class="scroll-indicator">
-            <p>Scroll down</p>
-            <i class="fas fa-chevron-down"></i>
+    <div class="video-container">
+        <video autoplay muted loop id="bg-video">
+            <source src="Background1.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        <div class="hero-content">
+            <h1>Welcome to Shadow Garden</h1>
+            <p>Your source for amazing anime content.</p>
+            <div class="scroll-indicator">
+                <p>Scroll down</p>
+                <i class="fas fa-chevron-down"></i>
+            </div>
         </div>
     </div>
 
     <nav>
         <div class="logo animate__animated animate__fadeInLeft">Shadow Garden</div>
         <div class="mobile-menu-icon">
-            <i class="fas fa-bars"></i>
-        </div>
+            <i class="fas fa-bars"></i> </div>
         <ul class="nav-links">
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="ongoing.html">Ongoing</a></li>
@@ -57,7 +42,7 @@
             <li><a href="about.html">About Us</a></li>
         </ul>
         <div class="mobile-menu">
-            <ul>
+             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="ongoing.html">Ongoing</a></li>
                 <li><a href="anime.html">Anime</a></li>
@@ -74,11 +59,13 @@
                 <i class="fas fa-search search-icon"></i>
             </div>
         </div>
-        <div id="searchResults" class="anime-grid search-results-grid"></div>
+        <div id="searchResults" class="anime-grid search-results-grid">
+            </div>
 
         <section class="trending animate__animated animate__fadeIn">
             <h2>🔥 Trending Anime</h2>
-            <div id="trendingAnime" class="anime-grid main-anime-grid"></div>
+            <div id="trendingAnime" class="anime-grid main-anime-grid">
+                </div>
         </section>
 
         <footer>
