@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Function to fetch anime data from your local JSON file
     const fetchAnime = async () => {
         try {
-            const res = await fetch("anime-data.json");
+           const res = await fetch("https://shadowgarden-api.koyeb.app/anime-data");
+
             if (!res.ok) {
                 throw new Error(`HTTP error! status: ${res.status}`);
             }
