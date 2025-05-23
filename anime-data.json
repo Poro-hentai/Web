@@ -1,44 +1,429 @@
 [
-    {
-        "name": "Solo Leveling",
-        "image": "images/solo.jpg",
-        "description": "Hunters fight to survive in a world full of monsters. Sung Jinwoo, the weakest hunter, gains a unique ability after a near-death experience, allowing him to level up indefinitely.",
-        "download": "https://example.com/solo-download",
-        "category": "ongoing"
-    },
-    {
-        "name": "Jujutsu Kaisen",
-        "image": "images/jujutsu.jpg",
-        "description": "Cursed spirits vs sorcerers in a dark battle. Yuji Itadori swallows a cursed object and becomes the host of Sukuna, a powerful curse, entering the world of Jujutsu Sorcerers.",
-        "download": "https://example.com/jujutsu-download",
-        "category": "ongoing"
-    },
-    {
-        "name": "Attack on Titan",
-        "image": "images/aot.jpg",
-        "description": "The last remnants of humanity fight back against giant, man-eating humanoids known as Titans, living within colossal walls for protection.",
-        "download": "https://example.com/aot-download",
-        "category": "anime"
-    },
-    {
-        "name": "One Piece",
-        "image": "images/demon.jpg",
-        "description": "Follows the adventures of Monkey D. Luffy and his pirate crew, the Straw Hat Pirates, as he searches for the ultimate treasure known as 'One Piece' to become the next Pirate King.",
-        "download": "https://example.com/onepiece-download",
-        "category": "anime"
-    },
-    {
-        "name": "My Hero Academia",
-        "image": "images/mha.jpg",
-        "description": "In a world where superpowers ('Quirks') are common, Izuku Midoriya, born without a Quirk, dreams of becoming a hero and is scouted by the world's greatest hero, All Might.",
-        "download": "https://example.com/mha-download",
-        "category": "anime"
-    },
-    {
-        "name": "Spy x Family",
-        "image": "images/spyxfamily.jpg",
-        "description": "A spy, an assassin, and a telepathic girl who are strangers to each other must pose as a family to execute a mission.",
-        "download": "https://example.com/spyxfamily-download",
-        "category": "ongoing"
-    }
+  {
+    "name": "Fate Series",
+    "image": "images/fate.jpg",
+    "description": "[Action, Fantasy, Supernatural, Magic]<br>The Fate Series follows various Holy Grail Wars, intense battles between mages who summon heroic spirits from history to fight for the omnipotent Holy Grail, capable of granting any wish, leading to dramatic and often tragic outcomes.",
+    "download": "https://t.me/+BGv-UtYu2VowZjRl",
+    "category": "anime"
+  },
+  {
+    "name": "Heroines Run the Show",
+    "image": "images/heroines.jpg",
+    "description": "[Music, Slice of Life, Idols, School]<br>Heroines Run the Show centers on Hiyori Suzumi, a high school girl who takes on a part-time job as an apprentice manager for a popular idol unit. She learns about the struggles and triumphs of the entertainment industry while balancing her school life.",
+    "download": "https://t.me/Rio_Tsukatsuki_bot?start=BQADAQADcA0AAs12gUaC5RNfnV7UGhYE",
+    "category": "anime"
+  },
+  {
+    "name": "NouCome",
+    "image": "images/noucome.jpg",
+    "description": "[Comedy, Romance, School, Harem]<br>In NouCome, Kanade Amakusa suffers from a bizarre curse called 'Absolute Choice,' where he must choose between two absurd options that appear before him at random. This leads to hilarious and often embarrassing situations, making his school life anything but ordinary.",
+    "download": "https://t.me/Rio_Tsukatsuki_bot?start=BQADAQADIAcAAtE0oUa12BDTfoDELBYE",
+    "category": "anime"
+  },
+  {
+    "name": "A Sign Of Affection",
+    "image": "images/a_sign_of_affection.jpg",
+    "description": "[Romance, Slice of Life, School]<br>A Sign Of Affection tells the heartwarming story of Yuki Itose, a deaf college student, and Itsuomi Nagi, a globe-trotting senior. As they navigate their growing feelings, they learn to communicate in new ways, overcoming challenges and building a unique connection.",
+    "download": "https://t.me/Rio_Tsukatsuki_bot?start=BQADAQADiQcAAorUkUWDlHSHheAf6RYE",
+    "category": "anime"
+  },
+  {
+    "name": "Just Because",
+    "image": "images/just_because.jpg",
+    "description": "[Romance, Slice of Life, School]<br>Just Because follows the lives of high school students as they approach graduation. The story focuses on the unexpected reunion of Eita Izumi with his middle school friends, leading to the rekindling of old feelings and the formation of new relationships amidst their final year.",
+    "download": "https://t.me/Rio_Tsukatsuki_bot?start=BQADAQADEwUAAiK9uEUTaKxbEYzwbxYE",
+    "category": "anime"
+  },
+  {
+    "name": "Love After The World Domination",
+    "image": "images/love_after_the_world_domination.jpg",
+    "description": "[Comedy, Romance, Action, Superpower]<br>Love After The World Domination is a hilarious romantic comedy about Fudo Aikawa, the leader of a heroic fighting squadron, and Desumi Magahara, the villainous leader of an evil organization. They secretly begin a forbidden relationship, balancing their public rivalry with their private affection.",
+    "download": "https://t.me/Ren_Yamashiro_bot?start=BQADAQADNAUAApp8wUbSCeI97R6U2BYE",
+    "category": "anime"
+  },
+  {
+    "name": "Girlfriend, Girlfriend",
+    "image": "images/girlfriend.jpg",
+    "description": "[Comedy, Romance, Harem, School]<br>Girlfriend, Girlfriend follows Naoya Mukai, who decides to simultaneously date two girls, Saki Saki and Nagisa Minase. This leads to a chaotic yet humorous polyamorous relationship as they all try to make it work under one roof.",
+    "download": "https://t.me/+jdqymgtJmWlhNDk1",
+    "category": "anime"
+  },
+  {
+    "name": "Kiss x Sis",
+    "image": "images/kiss.jpg",
+    "description": "[Comedy, Romance, Ecchi, School]<br>Kiss x Sis centers on Keita Suminoe, who is trying to study for high school entrance exams. However, he is constantly being distracted by the overwhelming affections of his two older stepsisters, Ako and Riko, leading to many embarrassing and comedic situations.",
+    "download": "https://t.me/Ren_Yamashiro_bot?start=BQADAQADcwQAAv9a2UZnFpxVOz6fsBYE",
+    "category": "anime"
+  },
+  {
+    "name": "World's End Harem",
+    "image": "images/world's_end_harem.jpg",
+    "description": "[Sci-Fi, Ecchi, Harem]<br>World's End Harem is set in a future where a devastating virus has wiped out 99.9% of the male population. This leaves a few immune men, including protagonist Reito Mizuhara, to repopulate the world, navigating a society dominated by women.",
+    "download": "https://t.me/Ren_Yamashiro_bot?start=BQADAQADYgsAAqeH4UaoX2Vn4iz_iRYE",
+    "category": "anime"
+  },
+  {
+    "name": "Future Dairy",
+    "image": "images/future_dairy.jpg",
+    "description": "[Action, Thriller, Psychological, Supernatural]<br>Future Diary follows Yukiteru Amano, an asocial boy who becomes involved in a deadly survival game. His phone, which can predict the future, makes him a participant in a battle royale for the title of God of Time and Space, forcing him to confront his fears.",
+    "download": "https://t.me/Ren_Yamashiro_bot?start=BQADAQADxRAAAqeH4UZWb_FtYaKdShYE",
+    "category": "anime"
+  },
+  {
+    "name": "Re Monster",
+    "image": "images/re_monster.jpg",
+    "description": "[Action, Fantasy, Reincarnation, Adventure]<br>Re:Monster follows Tomokui Kanata, who, after being killed, is reincarnated as a goblin named Rou in a fantasy world. He retains his past memories and abilities, evolving rapidly and gaining strength by consuming other creatures, rising through the ranks of goblin society.",
+    "download": "https://t.me/+pz7AgrlCzlowNzM1",
+    "category": "anime"
+  },
+  {
+    "name": "Horimiya",
+    "image": "images/horimiya.jpg",
+    "description": "[Romance, Slice of Life, School, Comedy]<br>Horimiya explores the dynamic relationship between Kyoko Hori, a popular and outgoing girl who is secretly a homebody, and Izumi Miyamura, a quiet and seemingly gloomy boy who is secretly pierced and tattooed. They discover each other's hidden sides, leading to a heartwarming and genuine connection.",
+    "download": "https://t.me/+hVlXrsPsFIUzZjg1",
+    "category": "anime"
+  },
+  {
+    "name": "Yamada's First Time",
+    "image": "images/yamada's_first_time.jpg",
+    "description": "[Comedy, Romance, School, Supernatural]<br>Yamada's First Time (also known as Yamada-kun and the Seven Witches) follows Ryu Yamada, a delinquent who discovers he can swap bodies with people by kissing them. He teams up with Urara Shiraishi, a straight-laced honor student, as they uncover the secrets of the school's 'witches' and their powers.",
+    "download": "https://t.me/Rio_Tsukatsuki_bot?start=BQADAQAD8gYAAgjWIEdGMA60aL18hBYE",
+    "category": "anime"
+  },
+  {
+    "name": "Oregairu",
+    "image": "images/oregairu.jpg",
+    "description": "[Comedy, Slice of Life, Romance, School]<br>Oregairu (My Youth Romantic Comedy Is Wrong, As I Expected) follows Hachiman Hikigaya, a cynical and isolated high school student. He is forced to join the Service Club with the seemingly perfect Yukino Yukinoshita and cheerful Yui Yuigahama, as they help other students with their problems while navigating their own complex relationships.",
+    "download": "https://t.me/+9XXwyG0YduhmYzY1",
+    "category": "anime"
+  },
+  {
+    "name": "Solo Leveling",
+    "image": "images/solo_leveling.jpg",
+    "description": "[Action, Fantasy, RPG, Adventure]<br>Solo Leveling tells the story of Sung Jinwoo, initially the weakest of all hunters. He gains a mysterious power that allows him to level up indefinitely, becoming the strongest hunter and facing countless challenges and powerful enemies in a world filled with dungeons and monsters.",
+    "download": "https://t.me/Solo_Leveling_Sama",
+    "category": "anime"
+  },
+  {
+    "name": "The Beginning After The End",
+    "image": "images/the_beginning_after_the_end.jpg",
+    "description": "[Action, Fantasy, Reincarnation, Magic]<br>The Beginning After The End follows King Grey, a powerful monarch in his previous life, who is reincarnated into a new world of magic and monsters as Arthur Leywin. He strives to correct past mistakes and protect his new family, embarking on a journey of self-discovery and growth.",
+    "download": "https://t.me/Beginning_After_The_End_Sama",
+    "category": "anime"
+  },
+  {
+    "name": "Aho Girl",
+    "image": "images/aho_girl.jpg",
+    "description": "[Comedy, Slice of Life, School, Gag]<br>Aho Girl is a comedic anime about Yoshiko Hanabatake, an incredibly idiotic high school girl obsessed with bananas and her long-suffering childhood friend Akuru Akutsu, who constantly tries to keep her in line. The series is filled with over-the-top gags and absurd situations.",
+    "download": "https://t.me/Rio_Tsukatsuki_bot?start=BQADAQAEBgACLzlZR9sU0xtqamt7FgQ",
+    "category": "anime"
+  },
+  {
+    "name": "The Dangers in My Heart",
+    "image": "images/the_dangers_in_my_heart.jpg",
+    "description": "[Romance, Comedy, School, Slice of Life]<br>The Dangers in My Heart follows Kyotaro Ichikawa, an introverted and dark-minded middle school student. He initially fantasizes about murdering his popular classmate Anna Yamada, but gradually develops genuine feelings for her as he observes her true personality.",
+    "download": "https://t.me/+tn4YXdNnhjA0MWY1",
+    "category": "anime"
+  },
+  {
+    "name": "Rascal Does Not Dream of Bunny Girl Senpai",
+    "image": "images/rascal_does_not_dream_of_bunny_girl_senpai.jpg",
+    "description": "[Romance, Supernatural, School]<br>Rascal Does Not Dream of Bunny Girl Senpai follows Sakuta Azusagawa as he encounters and helps various girls suffering from a mysterious phenomenon known as 'Adolescence Syndrome', starting with Mai Sakurajima, a famous actress who suddenly becomes invisible to others.",
+    "download": "https://t.me/+ZIKUAQOt-XpiMGI9",
+    "category": "anime"
+  },
+  {
+    "name": "Catch Me at the Ballpark!",
+    "image": "images/catch_me_at_the_ballpark.jpg",
+    "description": "[Sports, Slice of Life, School]<br>Catch Me at the Ballpark! (also known as Boukyaku Battery) focuses on two former baseball prodigies, Haruka Kiyomine and Kei Kaname, who reunite in high school after a past incident. They hope to play baseball together again, rekindling their passion for the sport.",
+    "download": "https://t.me/Catch_Me_At_The_Ballpark_Downloa",
+    "category": "anime"
+  },
+  {
+    "name": "Once Upon A Witch's Death",
+    "image": "images/once_upon_a_witch's_death.jpg",
+    "description": "[Fantasy, Adventure, Magic, Mystery]<br>Once Upon A Witch's Death (also known as Mahoutsukai no Yakusoku) follows a group of diverse wizards and witches who are brought together to defend their world against a looming threat. The story explores themes of destiny, magic, and the bonds formed in the face of adversity.",
+    "download": "https://t.me/Once_Upon_A_Witch_Death_Download",
+    "category": "anime"
+  },
+  {
+    "name": "Wind Breaker",
+    "image": "images/wind_breaker.jpg",
+    "description": "[Action, Delinquent, School, Martial Arts]<br>Wind Breaker follows Haruka Sakura, a delinquent who seeks to become the strongest at Furin High School, a school notorious for its powerful fighters who protect the town from various threats. He joins a unique group of students, learning about strength and camaraderie.",
+    "download": "https://t.me/Wind_Breaker_Season_02_Dual",
+    "category": "anime"
+  },
+  {
+    "name": "The Brilliant Healer's New Life in the Shadows",
+    "image": "images/the_brilliant_healer's_new_life_in_the_shadows.jpg",
+    "description": "[Fantasy, Adventure, Isekai, Comedy]<br>The Brilliant Healer's New Life in the Shadows (also known as Kage no Jitsuryokusha ni Naritakute!) tells the story of Cid Kagenou, who, after being reincarnated in a fantasy world, pretends to be a mob character while secretly orchestrating events as the mastermind behind a secret organization.",
+    "download": "https://t.me/The_Brilliant_Healers_New_Life_1",
+    "category": "anime"
+  },
+  {
+    "name": "Can a Boy-Girl Friendship Survive",
+    "image": "images/can_a_boy_girl_friendship_survive.jpg",
+    "description": "[Romance, Slice of Life, School, Comedy]<br>Can a Boy-Girl Friendship Survive (also known as Kimi wa Kawaii Onnanoko) explores the complicated dynamics of friendship and budding romance between high school students. It questions if a platonic relationship can truly last when feelings start to emerge, leading to awkward yet sweet moments.",
+    "download": "https://t.me/Can_a_Boy_Girl_Friendship_Survie",
+    "category": "anime"
+  },
+  {
+    "name": "Mission: Yozakura Family",
+    "image": "images/mission_yozakura_family.jpg",
+    "description": "[Action, Comedy, Spy, Family]<br>Mission: Yozakura Family follows Taiyo Asano, an extremely shy high school student, whose only friend is Mutsumi Yozakura. When he discovers Mutsumi's family is a powerful spy organization, he's forced to marry her to protect her and join their dangerous missions, leading to hilarious and action-packed situations.",
+    "download": "https://t.me/+KNUDnP4h8gs4OWU1",
+    "category": "anime"
+  },
+  {
+    "name": "The Unaware Atelier Meister",
+    "image": "images/the_unaware_atelier_meister.jpg",
+    "description": "[Fantasy, Slice of Life, Isekai, Comedy]<br>The Unaware Atelier Meister (also known as Cheat Kusushi no Slow Life: Isekai ni Tsukurou Drugstore) follows a pharmacist who is transported to another world and opens a drugstore. He uses his modern knowledge to create potions and remedies for the local populace, often without realizing the full impact of his creations.",
+    "download": "https://t.me/Unaware_Atelier_Meister/18",
+    "category": "anime"
+  },
+  {
+    "name": "Yandere Dark Elf: She Chased Me All The Way From Another World!",
+    "image": "images/yandere_dark_elf.jpg",
+    "description": "[Fantasy, Romance, Isekai, Comedy]<br>Yandere Dark Elf: She Chased Me All The Way From Another World! follows a protagonist who finds himself relentlessly pursued by a powerful and obsessive dark elf from another dimension. This leads to comedic and often perilous situations as he tries to navigate her intense affections.",
+    "download": "https://t.me/Yandere_dark_elf_she_chased_Me_1",
+    "category": "anime"
+  },
+  {
+    "name": "The Shiunji Family Children",
+    "image": "images/the_shiunji_family_children.jpg",
+    "description": "[Slice of Life, Comedy, Family, School]<br>The Shiunji Family Children (also known as Shiunji-ke no Kodomo-tachi) is a comedic and heartwarming story about the daily lives and eccentricities of the Shiunji siblings. It explores their unique personalities and relationships as they navigate sibling bonds and everyday challenges.",
+    "download": "https://t.me/The_Shiunji_Family_Children_sama",
+    "category": "anime"
+  },
+  {
+    "name": "Shikimori's Not Just A Cutie",
+    "image": "images/shikimori.jpg",
+    "description": "[Romance, Comedy, Slice of Life, School]<br>Shikimori's Not Just A Cutie follows the adorable and often clumsy Izumi, whose girlfriend Shikimori is seemingly perfect. However, she reveals a cool and protective side whenever he's in trouble, showcasing her various charms.",
+    "download": "https://t.me/Rio_Tsukatsuki_bot?start=BQADAQADVAgAAsfBuEc3gzfVfTrWjRYE",
+    "category": "anime"
+  },
+  {
+    "name": "Seitokai Yakuindomo",
+    "image": "images/seitokai_yakuindomo.jpg",
+    "description": "[Comedy, Slice of Life, School, Gag]<br>Seitokai Yakuindomo is a gag comedy set in a former all-girls school that has just gone co-ed. It focuses on the incredibly inappropriate and crude humor of the student council members, leading to endless absurd situations.",
+    "download": "https://t.me/+3jQmWr8Gfd5mOGE1",
+    "category": "anime"
+  },
+  {
+    "name": "Let This Grieving Soul Retire",
+    "image": "images/let_this_grieving_soul_retire.jpg",
+    "description": "[Fantasy, Comedy, Adventure, RPG]<br>Let This Grieving Soul Retire (also known as Nageki no Bourei wa Intai Shitai - Saijaku Hunter ni よる Saikyou Party Ikuseijutsu) follows Krai Andrich, a supposed 'Weakest Hunter' who constantly tries to retire. However, his past achievements and the loyalty of his powerful party members make it impossible, forcing him on more adventures.",
+    "download": "https://t.me/+R5v8JexYSIs3ZmM9",
+    "category": "anime"
+  },
+  {
+    "name": "Shironeko Project ZERO CHRONICLE",
+    "image": "images/shironeko_project_zero_chronicle.jpg",
+    "description": "[Action, Fantasy, Magic, Adventure]<br>Shironeko Project ZERO CHRONICLE delves into the origin story of the White Cat Project universe, focusing on the conflict between the Light King and the Dark King and the formation of their uneasy alliance to save the world from destruction.",
+    "download": "https://t.me/+bNjwkvA45IU0NTA1",
+    "category": "anime"
+  },
+  {
+    "name": "RPG Real Estate",
+    "image": "images/rpg_real_estate.jpg",
+    "description": "[Fantasy, Slice of Life, Comedy, Magic]<br>RPG Real Estate follows the adventures of four adorable girls working at a magical real estate agency. They help various fantasy creatures find their perfect homes, leading to heartwarming and humorous encounters in a charming world.",
+    "download": "https://t.me/+WHsKd0ixamA5MmY9",
+    "category": "anime"
+  },
+  {
+    "name": "Tawawa on Monday",
+    "image": "images/tawawa_on_monday.jpg",
+    "description": "[Slice of Life, Comedy, Ecchi, Short]<br>Tawawa on Monday is a collection of short animated shorts depicting everyday scenarios where girls with prominent figures encounter various situations, often bringing a smile to those around them and adding a touch of humor to mundane moments.",
+    "download": "https://t.me/+CzDrOpY46gY4YTk1",
+    "category": "anime"
+  },
+  {
+    "name": "MOONRISE",
+    "image": "images/moonrise.jpg",
+    "description": "[Sci-Fi, Action, Space]<br>MOONRISE is an epic sci-fi series set on the moon, where humans are in conflict with a mysterious alien force. It explores themes of survival, war, and humanity's future in space as they fight for their very existence.",
+    "download": "https://t.me/+zBC_Klw27spiZTE1",
+    "category": "anime"
+  },
+  {
+    "name": "Kaguya-sama: Love is War",
+    "image": "images/kaguya.jpg",
+    "description": "[Comedy, Romance, School, Psychological]<br>Kaguya-sama: Love is War follows the brilliant but stubborn student council president Miyuki Shirogane and vice-president Kaguya Shinomiya. Both are too proud to confess their feelings and instead engage in elaborate psychological battles to make the other confess first.",
+    "download": "https://t.me/+-n9zIJ0JAKQwMzY1",
+    "category": "anime"
+  },
+  {
+    "name": "Cupid's Chocolate",
+    "image": "images/cupid's_chocolate.jpg",
+    "description": "[Romance, Comedy, Harem, Supernatural]<br>Cupid's Chocolate (also known as Cupid's Chocolates) tells the story of Jiang Hao Yi, who wakes up after a night of drinking to find multiple girls claiming to be his girlfriend, thanks to a mysterious 'Cupid's Chocolate' that grants love at first sight.",
+    "download": "https://t.me/+3pNiJ02l-q8xZTY1",
+    "category": "anime"
+  },
+  {
+    "name": "The Qwaser of Stigmata",
+    "image": "images/the_qwaser_of_stigmata.jpg",
+    "description": "[Action, Supernatural, Ecchi, School]<br>The Qwaser of Stigmata features Qwasers, individuals who can manipulate elements by drawing power from breast milk. The story follows Alexander Nikolaevich Hell, a Qwaser who transfers to a Japanese school and fights against other Qwasers to protect the 'Theotokos of Tsarytsin' icon.",
+    "download": "https://t.me/+XtTnZNutSs4yMjU1",
+    "category": "anime"
+  },
+  {
+    "name": "CHRONOS RULER",
+    "image": "images/chronos_ruler.jpg",
+    "description": "[Action, Fantasy, Supernatural, Time Travel]<br>CHRONOS RULER follows Victo Putin and his partner Kiri, who fight against 'Horologues', demons that feed on time, to reclaim their stolen time and memories. They embark on a perilous journey to restore their pasts and defeat these formidable foes.",
+    "download": "https://t.me/+6TQZLM3ze7lkMWFl",
+    "category": "anime"
+  },
+  {
+    "name": "HELLO WORLD",
+    "image": "images/hello_world.jpg",
+    "description": "[Sci-Fi, Romance, Mystery]<br>HELLO WORLD is a sci-fi romance film set in Kyoto in 2027, where a shy high school student named Naomi Katagaki encounters a futuristic version of himself. The future Naomi tells him that he needs to save his future girlfriend Ruri from a tragic accident, leading to a complex journey through time.",
+    "download": "https://t.me/+RE5nNaUTUp01MGI1",
+    "category": "anime"
+  },
+  {
+    "name": "Redo Of Healer",
+    "image": "images/redo_of_healer.jpg",
+    "description": "[Fantasy, Revenge, Ecchi, Dark Fantasy]<br>Redo of Healer follows Keyaru, a healing magician who is repeatedly exploited and abused by his party members. He gains the ability to rewind time and seeks brutal revenge on those who wronged him by using his healing powers in twisted and dark ways.",
+    "download": "https://t.me/+Lqn7lPGlZh8yY2Q9",
+    "category": "anime"
+  },
+  {
+    "name": "Trapped in a Dating Sim: The World of Otome Games Is Tough for Mobs",
+    "image": "images/trapped_in_a_dating_sim.jpg",
+    "description": "[Fantasy, Comedy, Isekai, Harem]<br>Trapped in a Dating Sim: The World of Otome Games Is Tough for Mobs follows Leon Fou Bartfort, a former office worker reincarnated into a harsh otome game world where women hold dominant power. He is forced to struggle as a 'mob' character to survive and find his own path, often defying the game's expectations.",
+    "download": "https://t.me/+RIVW-HxbtFdmOGVl",
+    "category": "anime"
+  },
+  {
+    "name": "Campione!",
+    "image": "images/campione.jpg",
+    "description": "[Action, Fantasy, Harem, Supernatural]<br>Campione! follows Godou Kusanagi, a high school student who becomes a 'Campione', a Godslayer, after defeating a god. He is then tasked with fighting other mythological beings and dealing with the consequences of his new, powerful status, often attracting many female followers.",
+    "download": "https://t.me/+keHG4_FuVEk4ZDFl",
+    "category": "anime"
+  },
+  {
+    "name": "Yosuga no Sora",
+    "image": "images/yosuga_no_sora.jpg",
+    "description": "[Romance, Harem, Controversial]<br>Yosuga no Sora explores the complicated and controversial relationship between twins Haruka and Sora Kasugano after they move to a rural town following a family tragedy. The series delves into sensitive themes and multiple character routes.",
+    "download": "https://t.me/+luMPl-pLPXRjNDll",
+    "category": "anime"
+  },
+  {
+    "name": "Ga-Rei-Zero",
+    "image": "images/ga_rei_zero.jpg",
+    "description": "[Action, Supernatural, Tragedy, Demons]<br>Ga-Rei-Zero serves as a prequel to the Ga-Rei manga, focusing on the tragic bond and eventual conflict between two spiritual exorcists, Kagura Tsuchimiya and Yomi Isayama, as they fight supernatural threats. Their story is filled with betrayal and heartbreaking choices.",
+    "download": "https://t.me/+9YUn64bv2E9iMzg1",
+    "category": "anime"
+  },
+  {
+    "name": "An Archdemon's Dilemma: How to Love Your Elf Bride",
+    "image": "images/an_archdemon's_dilemma.jpg",
+    "description": "[Fantasy, Romance, Comedy, Slice of Life]<br>An Archdemon's Dilemma: How to Love Your Elf Bride follows Zagan, a feared sorcerer, who falls in love with and purchases a beautiful elf slave named Nephy at a black market auction. The series explores their awkward but heartwarming journey to understand each other and build a unique relationship.",
+    "download": "https://t.me/+_D7UZ9CAX40wZDVl",
+    "category": "anime"
+  },
+  {
+    "name": "The Dreaming Boy is a Realist",
+    "image": "images/the_dreaming_boy_is_a_realist.jpg",
+    "description": "[Romance, Comedy, School, Slice of Life]<br>The Dreaming Boy is a Realist follows Wataru Sajou, a high school student who has a crush on his beautiful classmate Aika Natsukawa. However, after a certain incident, he suddenly decides that he's not good enough for her and starts trying to maintain a realistic distance, leading to Aika misunderstanding his true intentions.",
+    "download": "https://t.me/+dAzXhRCmHL05ZDJl",
+    "category": "anime"
+  },
+  {
+    "name": "Gleipnir",
+    "image": "images/gleipnir.jpg",
+    "description": "[Action, Mystery, Supernatural, Psychological]<br>Gleipnir follows Shuichi Kagaya, a high school student who can transform into a furry mascot suit-like monster. He teams up with Clair Aoki, a girl who can enter and control his monster form, as they search for her missing sister and uncover the secrets behind their powers and a dangerous game of coin collection.",
+    "download": "https://t.me/+ccxnGLb8OqBlMWVl",
+    "category": "anime"
+  },
+  {
+    "name": "The Foolish Angel Dances with the Devil",
+    "image": "images/the_foolish_angel_dances_with_the_devil.jpg",
+    "description": "[Comedy, Supernatural, Romance, School]<br>The Foolish Angel Dances with the Devil follows Masatora Akutsu, a demon who comes to the human world to find a charismatic figure to unite the demon forces. Instead, he finds Lily Amane, an angel who he tries to corrupt to use her power, leading to hilarious and often romantic interactions.",
+    "download": "https://t.me/+NfqKpLVkFkwwOGFl",
+    "category": "anime"
+  },
+  {
+    "name": "Heaven's Lost Property",
+    "image": "images/heaven's_lost_property.jpg",
+    "description": "[Comedy, Ecchi, Harem, Supernatural]<br>Heaven's Lost Property follows Tomoki Sakurai, an ordinary boy whose peaceful life is turned upside down when an angeloid named Ikaros falls from the sky and becomes his servant. This leads to many bizarre and ecchi situations as more angeloids appear in his life.",
+    "download": "https://t.me/+D8dk9GJ4oUk3NDRl",
+    "category": "anime"
+  },
+  {
+    "name": "My Wife is the Student Council President",
+    "image": "images/my_wife_is_the_student_council_president.jpg",
+    "description": "[Comedy, Romance, Ecchi, School]<br>My Wife is the Student Council President follows Hayato Izumi, who unexpectedly becomes the vice-president of the student council after the newly elected president, Ui Wakana, proposes to him on their first meeting. This leads to a series of awkward and comedic situations as they navigate their student council duties and their unconventional life together.",
+    "download": "https://t.me/+vGpih6XxL1ZhNGY1",
+    "category": "anime"
+  },
+  {
+    "name": "SHIMONETA",
+    "image": "images/shimoneta.jpg",
+    "description": "[Comedy, Dystopian, Ecchi, Social Commentary]<br>SHIMONETA: A Boring World Where the Concept of Dirty Jokes Doesn't Exist is set in a dystopian future where all obscene language and materials are forbidden. Tanukichi Okuma joins a terrorist organization that spreads 'dirty jokes' in rebellion against the puritanical government, leading to hilarious and provocative situations.",
+    "download": "https://t.me/+3tUYwBcfXX85OTE1",
+    "category": "anime"
+  },
+  {
+    "name": "Uzaki-chan Wants to Hang Out!",
+    "image": "images/uzaki.jpg",
+    "description": "[Comedy, Slice of Life, Romance, School]<br>Uzaki-chan Wants to Hang Out! follows Shinichi Sakurai, a quiet and solitary college student, who is constantly bothered by his loud and energetic junior, Hana Uzaki. She wants him to be more social and have fun, leading to their amusing and developing relationship.",
+    "download": "https://t.me/+0vWu3D1vkP04NWI1",
+    "category": "anime"
+  },
+  {
+    "name": "Kubo Won't Let Me Be Invisible",
+    "image": "images/kubo.jpg",
+    "description": "[Romance, Comedy, Slice of Life, School]<br>Kubo Won't Let Me Be Invisible follows Junta Shiraishi, an extremely unnoticeable high school student, and Nagisa Kubo, his classmate who always manages to find him and tease him. She slowly brings him out of his shell, leading to heartwarming and humorous interactions.",
+    "download": "https://t.me/+pG-5Qd7XpVdjMGM1",
+    "category": "anime"
+  },
+  {
+    "name": "Darling in the Franxx",
+    "image": "images/darling_in_the_franxx.jpg",
+    "description": "[Action, Sci-Fi, Mecha, Romance]<br>Darling in the Franxx is set in a dystopian future where humanity pilots giant mechs called Franxx to fight mysterious creatures known as Klaxosaurs. The story focuses on Hiro, a pilot who struggles to synchronize with a partner, until he meets Zero Two, a mysterious girl with horns, and their bond becomes crucial for humanity's survival.",
+    "download": "https://t.me/+WMQaX08ttR5lYTFl",
+    "category": "anime"
+  },
+  {
+    "name": "Irina",
+    "image": "images/irina.jpg",
+    "description": "[Fantasy, Sci-Fi, Drama, Historical]<br>Irina: The Vampire Cosmonaut (also known as Tsuki to Laika to Nosferatu) is set in an alternate history where a young vampire girl named Irina Luminesk is used as a test subject for a space program. The series explores themes of discrimination, ambition, and the human desire for space exploration.",
+    "download": "https://t.me/+nacewOscdD1mNzBl",
+    "category": "anime"
+  },
+  {
+    "name": "Rosario + Vampire",
+    "image": "images/rosario.jpg",
+    "description": "[Comedy, Supernatural, Harem, School]<br>Rosario + Vampire follows Tsukune Aono, an ordinary human who accidentally enrolls in Yokai Academy, a school for monsters. To survive, he must keep his human identity a secret while navigating a chaotic school life filled with various monster girls, especially the vampire Moka Akashiya.",
+    "download": "https://t.me/+qFIqnQCHaSBhYTRl",
+    "category": "anime"
+  },
+  {
+    "name": "My Love Story with Yamada-kun at Lv999",
+    "image": "images/my_love_story_with_yamada_kun_at_lv999.jpg",
+    "description": "[Romance, Comedy, Gaming, Slice of Life]<br>My Love Story with Yamada-kun at Lv999 (also known as Loving Yamada at Lv999!) follows Akane Kinoshita, a college student who tries to move on after her boyfriend cheats on her by immersing herself in an online RPG. She meets Akito Yamada, a famous but socially awkward pro gamer, and their real-life romance slowly blossoms.",
+    "download": "https://t.me/+3yzz2Nvrgw9iMTk1",
+    "category": "anime"
+  },
+  {
+    "name": "Black Butler",
+    "image": "images/black_butler.jpg",
+    "description": "[Dark Fantasy, Supernatural, Mystery, Historical]<br>Black Butler follows Ciel Phantomhive, a young earl who has made a Faustian contract with a demon named Sebastian Michaelis. Sebastian serves as Ciel's impeccable butler while assisting him in solving crimes and avenging his family, all while secretly desiring Ciel's soul.",
+    "download": "https://t.me/+iwM3_OHMgQI1MjM1",
+    "category": "anime"
+  },
+  {
+    "name": "As The Moon So Beautiful",
+    "image": "images/as_the_moon_so_beautiful.jpg",
+    "description": "[Romance, Slice of Life, School, Drama]<br>As The Moon So Beautiful (also known as Tsuki ga Kirei) is a realistic and heartwarming story about the first romance between two shy middle school students, Kotarou Azumi and Akane Mizuno. They navigate their feelings and the challenges of young love, often through text messages and quiet moments.",
+    "download": "https://t.me/+c_G_O-qrBvo1ODU1",
+    "category": "anime"
+  },
+  {
+    "name": "The Case Study of Vanitas",
+    "image": "images/the_case_study_of_vanitas.jpg",
+    "description": "[Fantasy, Supernatural, Steampunk, Mystery]<br>The Case Study of Vanitas follows Noé Archiviste, a young vampire who travels to Paris in search of the Book of Vanitas, a grimoire said to be capable of corrupting vampires. He encounters Vanitas, a human doctor specializing in vampires, who wields the very book Noé seeks, and together they embark on a quest to cure the corrupted vampires.",
+    "download": "https://t.me/+cDJ3PSbZIV9kYzQ1",
+    "category": "anime"
+  }
 ]
