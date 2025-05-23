@@ -4,7 +4,8 @@
     "image": "images/fate.jpg",
     "description": "[Action, Fantasy, Supernatural, Magic]<br>The Fate Series follows various Holy Grail Wars, intense battles between mages who summon heroic spirits from history to fight for the omnipotent Holy Grail, capable of granting any wish, leading to dramatic and often tragic outcomes.",
     "download": "https://t.me/+BGv-UtYu2VowZjRl",
-    "category": "anime"
+    "category": "anime",
+    "is_trending": true
   },
   {
     "name": "Heroines Run the Show",
