@@ -7,20 +7,25 @@
     <title>About Us - Shadow Garden</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        xintegrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@600&family=Roboto&display=swap" rel="stylesheet">
+
 </head>
 
 <body class="about-page">
-    <div class="cursor"></div>
-
     <div id="particles-js" class="full-page-particles"></div>
+    <div class="cursor"></div>
 
     <nav>
         <div class="logo animate__animated animate__fadeInLeft">Shadow Garden</div>
         <div class="mobile-menu-icon">
-            <i class="fas fa-bars"></i> </div>
+            <i class="fas fa-bars"></i>
+        </div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="ongoing.html">Ongoing</a></li>
@@ -28,7 +33,7 @@
             <li><a href="about.html" class="active">About Us</a></li>
         </ul>
         <div class="mobile-menu">
-             <ul>
+            <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="ongoing.html">Ongoing</a></li>
                 <li><a href="anime.html">Anime</a></li>
@@ -37,32 +42,72 @@
         </div>
     </nav>
 
-    <section class="about animate__animated animate__fadeIn">
-        <h2>📬 Contact / Feedback / FAQ</h2>
-        <form id="contactForm">
-            <input type="text" name="from_name" placeholder="Your Name" required>
-            <input type="email" name="reply_to" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message..." required></textarea>
-            <button type="submit" class="glow-button">Submit</button>
-            <p id="formMessage"></p>
-            <div id="success-animation" class="success-animation">
-                <i class="fas fa-check-circle"></i>
-                <p>Thank you for your feedback!</p>
+    <section class="hero-section about-page-hero">
+        <div class="hero-content">
+            <h1>About Shadow Garden</h1>
+            <p>Learn more about our mission and what we offer.</p>
+            <div class="quick-links">
+                <a href="#our-mission" class="glow-button">About</a>
+                <a href="#feedback-form-section" class="glow-button">Feedback</a>
+                <a href="#faq-section" class="glow-button">FAQ</a>
             </div>
-        </form>
+        </div>
+    </section>
 
-        <div class="faq animate__animated animate__fadeInUp">
+    <div class="main-content">
+        <section class="about animate__animated animate__fadeInUp" id="our-mission">
+            <h2>Our Mission</h2>
+            <p>At Shadow Garden, our mission is to provide anime enthusiasts with a seamless and enjoyable experience. We strive to be your go-to destination for discovering new anime, keeping up with ongoing series, and connecting with a vibrant community of fellow fans.</p>
+            <p>We are passionate about anime and dedicated to curating a high-quality collection, ensuring easy access to your favorite shows. Our platform is designed with you in mind, offering a user-friendly interface and a commitment to keeping you updated with the latest in the anime world.</p>
+
+            <div class="about-highlights">
+                <div class="highlight-card animate__animated animate__fadeInUp">
+                    <i class="fas fa-eye"></i>
+                    <h3>Vast Collection</h3>
+                    <p>Explore a wide array of anime series and movies, from timeless classics to the latest releases.</p>
+                </div>
+                <div class="highlight-card animate__animated animate__fadeInUp" data-wow-delay="0.2s">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Ongoing Updates</h3>
+                    <p>Stay current with new episodes and series as they are released, so you never miss a moment.</p>
+                </div>
+                <div class="highlight-card animate__animated animate__fadeInUp" data-wow-delay="0.4s">
+                    <i class="fas fa-users"></i>
+                    <h3>Community Focused</h3>
+                    <p>Join our active community on Telegram to discuss, share, and connect with other anime lovers.</p>
+                </div>
+            </div>
+
+            <div class="feedback-form-container animate__animated animate__fadeInUp" id="feedback-form-section">
+                <h3>Send Us Your Feedback</h3>
+                <form id="contact-form" class="feedback-form">
+                    <label for="user_name">Name</label>
+                    <input type="text" id="user_name" name="user_name" required>
+
+                    <label for="user_email">Email</label>
+                    <input type="email" id="user_email" name="user_email" required>
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+
+                    <button type="submit" class="button-53">Send Message</button>
+                    <p id="form-status"></p>
+                </form>
+            </div>
+        </section>
+
+        <section class="about animate__animated animate__fadeInUp" id="faq-section">
             <h3>📌 FAQ</h3>
             <p><strong>Q:</strong> How can I request a new anime?<br><strong>A:</strong> Use the feedback form above.</p>
             <p><strong>Q:</strong> Where can I join the community?<br><strong>A:</strong> Join our Telegram channel/group below.</p>
-        </div>
+        </section>
 
         <div class="telegram-info animate__animated animate__fadeInUp">
             <h3>🌐 Connect With Us</h3>
             <p>Join our <strong>Telegram Channel</strong>: <a href="https://t.me/Lord_Shadow_Sama" target="_blank">Click Here</a></p>
             <p>Join our <strong>Telegram Group</strong>: <a href="https://t.me/Sister_Leveling" target="_blank">Click Here</a></p>
         </div>
-    </section>
+    </div>
 
     <footer>
         <div class="footer-content">
@@ -71,15 +116,28 @@
         <div id="particles-js-footer"></div>
     </footer>
 
+    <div id="animeDetailOverlay" class="anime-detail-overlay">
+        <div class="anime-detail-content">
+            <button class="close-detail-btn">&times;</button>
+            <div class="detail-header">
+                <img id="detailPoster" class="detail-poster" src="" alt="Anime Poster">
+                <div class="detail-info">
+                    <h2 id="detailTitle"></h2>
+                    <p><strong>Genre:</strong> <span id="detailGenre"></span></p>
+                    <p><strong>Status:</strong> <span id="detailCategory"></span></p>
+                    <p id="detailDescription"></p>
+                    <div class="button-container">
+                        <a id="detailDownloadBtn" href="#" class="glow-button" target="_blank"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <button id="scrollToTopBtn" class="scroll-to-top-btn"><i class="fas fa-arrow-up"></i></button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-    <script>
-        // Initialize EmailJS with your user ID
-        // IMPORTANT: Replace "YOUR_USER_ID" with your actual EmailJS user ID
-        emailjs.init("YOUR_USER_ID");
-    </script>
     <script src="script.js"></script>
 </body>
 

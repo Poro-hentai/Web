@@ -7,34 +7,24 @@
     <title>Shadow Garden - Home</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        xintegrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@600&family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="video-container">
-        <video autoplay muted loop id="bg-video">
-            <source src="https://streamable.com/m5uv53?src=player-page-share" type="video/mp4">
-            Your browser does not support HTML5 video.
-        </video>
-        <div class="hero-content">
-            <h1>Welcome to Shadow Garden</h1>
-            <p>Your source for amazing anime content.</p>
-            <div class="scroll-indicator">
-                <p>Scroll down</p>
-                <i class="fas fa-chevron-down"></i>
-            </div>
-        </div>
-    </div>
+    <div id="particles-js" class="full-page-particles"></div>
+    <div class="cursor"></div>
 
     <nav>
         <div class="logo animate__animated animate__fadeInLeft">Shadow Garden</div>
         <div class="mobile-menu-icon">
-            <i class="fas fa-bars"></i> </div>
+            <i class="fas fa-bars"></i>
+        </div>
         <ul class="nav-links">
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="ongoing.html">Ongoing</a></li>
@@ -42,39 +32,78 @@
             <li><a href="about.html">About Us</a></li>
         </ul>
         <div class="mobile-menu">
-             <ul>
+            <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="ongoing.html">Ongoing</a></li>
                 <li><a href="anime.html">Anime</a></li>
                 <li><a href="about.html">About Us</a></li>
             </ul>
-        </div>
-    </nav>
-
-    <div class="main-content">
-        <div class="search-bar-header animate__animated animate__fadeInUp">
-            <div class="input-search-container">
-                <input type="text" id="searchInput" class="input-search" placeholder="Search anime...">
+            <div class="input-search-container mobile-search">
+                <input type="text" id="searchInputMobile" class="input-search" placeholder="Search anime...">
                 <span class="border-span"></span>
                 <i class="fas fa-search search-icon"></i>
             </div>
         </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Welcome to Shadow Garden</h1>
+            <p>Your ultimate destination for all things anime. Explore a vast collection, keep track of ongoing series, and join our community.</p>
+            
+            <a href="anime.html" class="glow-button animate__animated animate__zoomIn">Anime List<i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <section class="search-section animate__animated animate__fadeInUp">
+        <h2>Find Your Anime</h2>
+        <div class="input-search-container">
+            <input type="text" id="searchInput" class="input-search" placeholder="Search anime...">
+            <span class="border-span"></span>
+            <i class="fas fa-search search-icon"></i>
+        </div>
         <div id="searchResults" class="anime-grid search-results-grid">
             </div>
+            
+    </section>
 
-
-        <footer>
-            <div class="footer-content">
-                <p>&copy; 2024 Shadow Garden. All rights reserved.</p>
+    <section class="featured-anime-section animate__animated animate__fadeIn">
+        <h1>🔥 Popular Anime</h1>
+        <div id="animeGridIndex" class="anime-grid main-anime-grid">
             </div>
-            <div id="particles-js-footer"></div>
-        </footer>
+        <div class="explore-all-button-container">
+            <a href="anime.html" class="glow-button animate__animated animate__zoomIn">Explore All Anime <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Shadow Garden. All rights reserved.</p>
+        </div>
+        <div id="particles-js-footer"></div>
+    </footer>
+
+    <div id="animeDetailOverlay" class="anime-detail-overlay">
+        <div class="anime-detail-content">
+            <button class="close-detail-btn">&times;</button>
+            <div class="detail-header">
+                <img id="detailPoster" class="detail-poster" src="" alt="Anime Poster">
+                <div class="detail-info">
+                    <h2 id="detailTitle"></h2>
+                    <p><strong>Genre:</strong> <span id="detailGenre"></span></p>
+                    <p><strong>Status:</strong> <span id="detailCategory"></span></p>
+                    <p id="detailDescription"></p>
+                    <div class="button-container">
+                        <a id="detailDownloadBtn" href="#" class="glow-button" target="_blank"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <button id="scrollToTopBtn" class="scroll-to-top-btn"><i class="fas fa-arrow-up"></i></button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script src="script.js"></script>
 </body>
 

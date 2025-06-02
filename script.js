@@ -1,21 +1,90 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Function to fetch anime data from your local JSON file
-    const fetchAnime = async () => {
+    const Kitsu_API_BASE_URL = "https://kitsu.io/api/edge";
+    const animeGridIndex = document.getElementById("animeGridIndex"); // For home page featured anime
+    const animeGridOngoing = document.getElementById("animeGrid"); // For ongoing.html
+    const animeGridAnime = document.getElementById("animeGridAnime"); // For anime.html
+
+    // Search result containers and inputs
+    const searchResultsSectionIndex = document.getElementById("searchResultsSection"); // Removed, results directly below search
+    const searchResultsIndex = document.getElementById("searchResults");
+    const searchInputIndex = document.getElementById("searchInput"); // Nav search on index (desktop)
+    const searchInputMobileIndex = document.getElementById("searchInputMobile"); // Mobile nav search on index
+
+    const searchResultsSectionAnime = document.getElementById("searchResultsSectionAnime"); // Removed, results directly below search
+    const searchResultsAnime = document.getElementById("searchResultsAnime");
+    const searchInputAnime = document.getElementById("searchInputAnime"); // Nav search on anime page (desktop)
+    const searchInputAnimeMobile = document.getElementById("searchInputAnimeMobile"); // Mobile nav search on anime page
+
+    const searchResultsSectionOngoing = document.getElementById("searchResultsSectionOngoing"); // Removed, results directly below search
+    const searchResultsOngoing = document.getElementById("searchResultsOngoing");
+    const searchInputOngoing = document.getElementById("searchInputOngoing"); // Nav search on ongoing page (desktop)
+    const searchInputOngoingMobile = document.getElementById("searchInputOngoingMobile"); // Mobile nav search on ongoing page
+
+    // Anime Detail Overlay elements
+    const animeDetailOverlay = document.getElementById('animeDetailOverlay');
+    const closeDetailBtn = document.querySelector('.close-detail-btn');
+    const detailPoster = document.getElementById('detailPoster');
+    const detailTitle = document.getElementById('detailTitle');
+    const detailGenre = document.getElementById('detailGenre');
+    const detailCategory = document.getElementById('detailCategory');
+    const detailDescription = document.getElementById('detailDescription');
+    const detailDownloadBtn = document.getElementById('detailDownloadBtn');
+
+    let allAnimeData = []; // To store combined data from anime-data.json and Kitsu
+    let timeoutId; // For debouncing search input
+
+    // Function to fetch anime data from local JSON and enrich with Kitsu API
+    const fetchAndEnrichAnime = async () => {
         try {
-            const res = await fetch("anime-data.json");
-            if (!res.ok) {
-                throw new Error(`HTTP error! status: ${res.status}`);
+            const localRes = await fetch("anime-data.json");
+            if (!localRes.ok) {
+                throw new Error(`HTTP error! status: ${localRes.status}`);
             }
-            return await res.json();
+            const localAnime = await localRes.json();
+
+            const kitsuPromises = localAnime.map(async (anime) => {
+                // Search Kitsu by title to get detailed information
+                const kitsuSearchRes = await fetch(`${Kitsu_API_BASE_URL}/anime?filter[text]=${encodeURIComponent(anime.title)}`);
+                if (kitsuSearchRes.ok) {
+                    const kitsuData = await kitsuSearchRes.json();
+                    if (kitsuData.data && kitsuData.data.length > 0) {
+                        const kitsuAnime = kitsuData.data[0].attributes;
+                        return {
+                            id: kitsuData.data[0].id, // Add Kitsu ID for potential future use
+                            title: anime.title,
+                            posterImage: kitsuAnime.posterImage ? (kitsuAnime.posterImage.large || kitsuAnime.posterImage.medium) : 'placeholder.jpg',
+                            description: kitsuAnime.synopsis || "No description available.",
+                            download: anime.download,
+                            category: anime.category || "General", // Default to "General" if not specified
+                            genre: anime.genre || "N/A"
+                        };
+                    }
+                }
+                // If Kitsu data not found or error, return local data with placeholders
+                return {
+                    id: null,
+                    title: anime.title,
+                    posterImage: 'placeholder.jpg', // A generic placeholder image
+                    description: "No description available.",
+                    download: anime.download,
+                    category: anime.category || "General",
+                    genre: anime.genre || "N/A"
+                };
+            });
+
+            allAnimeData = await Promise.all(kitsuPromises);
+            console.log("Combined Anime Data:", allAnimeData);
+            return allAnimeData;
+
         } catch (error) {
-            console.error("Failed to fetch anime data:", error);
+            console.error("Failed to fetch and enrich anime data:", error);
             return []; // Return empty array on error
         }
     };
 
-    // Function to render anime cards with flip effect
-    const renderCards = (data, containerElement) => {
+    // Function to render anime cards
+    const renderCards = (data, containerElement, isSearch = false) => {
         if (!containerElement) {
             console.error("Container element not found for rendering cards.");
             return;
@@ -23,354 +92,178 @@ document.addEventListener("DOMContentLoaded", () => {
         containerElement.innerHTML = ""; // Clear previous content
 
         if (!data || data.length === 0) {
-            // Display a message if no anime data is found or data is empty
             const noAnimeMessage = document.createElement("p");
-            noAnimeMessage.textContent = "No anime found matching your criteria.";
-            noAnimeMessage.style.textAlign = "center"; // Center the message
-            noAnimeMessage.style.gridColumn = "1 / -1"; // Make it span all columns in a grid
-            noAnimeMessage.style.width = "100%"; // Ensure it takes full width in the grid context
+            noAnimeMessage.textContent = isSearch ? "No matching anime found." : "No anime found.";
+            noAnimeMessage.style.textAlign = "center";
+            noAnimeMessage.style.gridColumn = "1 / -1";
+            noAnimeMessage.style.width = "100%";
             containerElement.appendChild(noAnimeMessage);
             return;
         }
 
-        data.forEach(anime => {
-            // Main card container (for perspective)
-            const card = document.createElement("div");
-            card.className = "anime-card animate__animated animate__fadeInUp"; // Add animation class
-            card.style.setProperty('--animate-duration', '0.5s'); // Optional: control animation speed
-
-            // Inner container that flips
-            const cardInner = document.createElement("div");
-            cardInner.className = "anime-card-inner";
-
-            // Front face of the card
-            const cardFront = document.createElement("div");
-            cardFront.className = "anime-card-front";
-            cardFront.innerHTML = `
-                <img src="${anime.image || 'images/placeholder.jpg'}" alt="${anime.name || 'Anime Title'}" onerror="this.onerror=null;this.src='images/placeholder.jpg';">
-                <h3>${anime.name || 'Anime Title'}</h3>
-                <p class="front-description">${anime.description ? anime.description.substring(0, 80) + '...' : 'No description available.'}</p> <p class="hover-indicator">Hover for details</p>
-            `;
-
-            // Back face of the card
-            const cardBack = document.createElement("div");
-            cardBack.className = "anime-card-back";
-
-            let downloadButtonHTML = '';
-            // Only show a functional download button if a download link exists
-            if (anime.download && anime.download !== '#') {
-                downloadButtonHTML = `<a href="${anime.download}" class="glow-button" target="_blank" rel="noopener noreferrer">Download</a>`;
-            } else {
-                // Show a placeholder button if no download link
-                downloadButtonHTML = `<a href="#" class="glow-button disabled" onclick="return false;">Download (Link N/A)</a>`;
+        data.forEach((anime) => {
+            const animeCard = document.createElement("div");
+            animeCard.classList.add("anime-card");
+            if (isSearch) {
+                animeCard.classList.add("search-result-card"); // Add class for specific search result styling
             }
 
-            cardBack.innerHTML = `
-                <h3>${anime.name || 'Anime Title'}</h3>
-                <p>${anime.description || 'No description available.'}</p>
-                ${downloadButtonHTML}
+            animeCard.innerHTML = `
+                <div class="anime-card-inner">
+                    <div class="anime-card-front">
+                        <img src="${anime.posterImage}" alt="${anime.title} Poster">
+                        <h3>${anime.title}</h3>
+                        <p>${anime.genre}</p>
+                    </div>
+                </div>
             `;
-
-            cardInner.appendChild(cardFront);
-            cardInner.appendChild(cardBack);
-            card.appendChild(cardInner);
-            containerElement.appendChild(card);
+            // Add click listener to show detail overlay
+            animeCard.addEventListener('click', () => displayAnimeDetail(anime));
+            containerElement.appendChild(animeCard);
         });
     };
 
-    // Function to set up local search functionality
-    const setupLocalSearch = async (inputId, searchResultContainerId, mainGridContainerId = null, category = null) => {
-        const inputElement = document.getElementById(inputId);
-        const resultsContainer = document.getElementById(searchResultContainerId);
-        const mainGridElement = mainGridContainerId ? document.getElementById(mainGridContainerId) : null;
-
-        if (!inputElement || !resultsContainer) {
-            console.warn(`Search input or results container not found for: ${inputId}, ${searchResultContainerId}`);
-            return; // Silently return if elements are not on the page
-        }
-
-        const allAnimeData = await fetchAnime();
-        // Filter the full data by category for the main grid on this page
-        const mainGridData = category ? allAnimeData.filter(anime => anime.category === category) : allAnimeData;
-
-
-        // Function to display initial content (local data for the main grid)
-        const displayMainGridContent = () => {
-            // Initially, the search results container is empty
-            resultsContainer.innerHTML = '';
-            // The main grid is always visible
-            if (mainGridElement) {
-                renderCards(mainGridData, mainGridElement); // Render initial/categorized local data
-            }
-        };
-
-        // Display initial content on page load
-        displayMainGridContent();
-
-
-        inputElement.addEventListener("input", () => {
-            const searchTerm = inputElement.value.toLowerCase().trim();
-            let filteredAnime = mainGridData; // Start with data relevant to this page's main grid
-
-            if (searchTerm) {
-                // Filter based on search term
-                filteredAnime = filteredAnime.filter(anime =>
-                    (anime.name || '').toLowerCase().includes(searchTerm) ||
-                    (anime.description || '').toLowerCase().includes(searchTerm)
-                );
-                // Render search results in the dedicated container
-                renderCards(filteredAnime, resultsContainer);
-
-                // The main grid remains visible below the search results
-            } else {
-                // If search term is empty, clear search results
-                resultsContainer.innerHTML = '';
-                // The main grid is already visible
-            }
-        });
-
-        // Also handle clearing results when the search input is cleared (e.g., by pressing X)
-        inputElement.addEventListener("search", () => {
-            if (inputElement.value === "") {
-                resultsContainer.innerHTML = ''; // Clear search results
-                // The main grid is already visible
-            }
-        });
+    // Function to display anime details in the overlay
+    const displayAnimeDetail = (anime) => {
+        detailPoster.src = anime.posterImage;
+        detailTitle.textContent = anime.title;
+        detailGenre.textContent = anime.genre;
+        detailCategory.textContent = anime.category;
+        detailDescription.textContent = anime.description;
+        detailDownloadBtn.href = anime.download;
+        animeDetailOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling body when overlay is active
     };
 
-
-    // --- Page Initialization ---
-
-    const currentPage = window.location.pathname.split("/").pop(); // Get current page filename
-
-    if (currentPage === "index.html" || currentPage === "") {
-        // Home Page: Setup local search and load trending anime
-        setupLocalSearch("searchInput", "searchResults", "trendingAnime"); // Use trendingAnime as main grid
-    } else if (currentPage === "ongoing.html") {
-        // Ongoing Page: Setup local search and load ongoing anime
-        setupLocalSearch("searchInputOngoing", "searchResultsOngoing", "animeGrid", "ongoing"); // Use animeGrid as main grid, filter by 'ongoing'
-    } else if (currentPage === "anime.html") {
-        // Anime Page: Setup local search and load all anime (or category="anime")
-        setupLocalSearch("searchInputAnime", "searchResultsAnime", "animeGridAnime", "anime"); // Use animeGridAnime as main grid, filter by 'anime'
-    } else if (currentPage === "about.html") {
-        // About Page: Setup feedback form
-        const contactForm = document.getElementById("contactForm");
-        if (contactForm) {
-            const formMessage = document.getElementById("formMessage");
-            const successAnimation = document.getElementById("success-animation");
-
-            contactForm.addEventListener("submit", function(event) {
-                event.preventDefault();
-                if (!formMessage || !successAnimation) {
-                    console.error("Form message or success animation element not found.");
-                    return;
-                }
-
-                // IMPORTANT: Replace 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', and 'YOUR_USER_ID' with your actual EmailJS credentials
-                emailjs.sendForm('service_v9001qu', 'template_d66w1h7', this, 'M9Dzs6ZXnABSforwB')
-                    .then(() => {
-                        formMessage.innerText = ""; // Clear any previous messages
-                        successAnimation.style.display = "flex"; // Show success animation
-                        contactForm.reset(); // Reset the form
-                        setTimeout(() => {
-                            successAnimation.style.display = "none"; // Hide success animation after 3 seconds
-                        }, 3000);
-                    }, (error) => {
-                        formMessage.innerText = "Failed to send message. Please try again."; // Show error message
-                        console.error("EmailJS error:", error);
-                        successAnimation.style.display = "none"; // Hide success animation on error
-                    });
-            });
-            // EmailJS initialization is done in the about.html script tag before this script runs.
-            // Ensure you have replaced 'YOUR_USER_ID' in about.html script tag.
-        }
-
-        // Initialize particles for the full background on the About page
-        const fullPageParticlesContainer = document.getElementById("particles-js");
-        if (fullPageParticlesContainer && typeof particlesJS !== 'undefined') {
-            particlesJS("particles-js", {
-                particles: {
-                    number: {
-                        value: 80,
-                        density: {
-                            enable: true,
-                            value_area: 1000
-                        }
-                    },
-                    color: {
-                        value: "#9f6bff"
-                    },
-                    shape: {
-                        type: "circle"
-                    },
-                    opacity: {
-                        value: 0.5,
-                        random: true
-                    },
-                    size: {
-                        value: 3,
-                        random: true
-                    },
-                    line_linked: {
-                        enable: true,
-                        distance: 150,
-                        color: "#9f6bff",
-                        opacity: 0.4,
-                        width: 1
-                    },
-                    move: {
-                        enable: true,
-                        speed: 2,
-                        direction: "none",
-                        random: true,
-                        straight: false,
-                        out_mode: "out",
-                        bounce: false
-                    }
-                },
-                interactivity: {
-                    detect_on: "canvas",
-                    events: {
-                        onhover: {
-                            enable: true,
-                            mode: "grab"
-                        },
-                        onclick: {
-                            enable: false,
-                            mode: "push"
-                        },
-                        resize: true
-                    },
-                    modes: {
-                        grab: {
-                            distance: 120,
-                            line_linked: {
-                                opacity: 0.8
-                            }
-                        },
-                        bubble: {
-                            distance: 250,
-                            size: 25,
-                            duration: 2,
-                            opacity: 0.9
-                        },
-                        repulse: {
-                            distance: 200,
-                            duration: 0.4
-                        },
-                        push: {
-                            particles_nb: 4
-                        },
-                        remove: {
-                            particles_nb: 2
-                        }
-                    }
-                },
-                retina_detect: true
-            });
-        } else if (fullPageParticlesContainer && typeof particlesJS === 'undefined') {
-            console.warn("particles.js library is not loaded for the full page background.");
-        }
-
-    }
-
-    // Particle.js config (Footer) - Initialize particles only for the footer container on other pages
-    const footerParticlesContainer = document.getElementById("particles-js-footer");
-    // Check if it's NOT the about page and the container exists
-    if (currentPage !== "about.html" && footerParticlesContainer && typeof particlesJS !== 'undefined') {
-        particlesJS("particles-js-footer", { // Initialize particles for the footer container
-            particles: {
-                number: {
-                    value: 80,
-                    density: {
-                        enable: true,
-                        value_area: 1000
-                    }
-                },
-                color: {
-                    value: "#9f6bff"
-                },
-                shape: {
-                    type: "circle"
-                },
-                opacity: {
-                    value: 0.5,
-                    random: true
-                },
-                size: {
-                    value: 3,
-                    random: true
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: "#9f6bff",
-                    opacity: 0.4,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    out_mode: "out",
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: "grab"
-                    },
-                    onclick: {
-                        enable: false,
-                        mode: "push"
-                    },
-                    resize: true
-                },
-                modes: {
-                    grab: {
-                        distance: 120,
-                        line_linked: {
-                            opacity: 0.8
-                        }
-                    },
-                    bubble: {
-                        distance: 250,
-                        size: 25,
-                        duration: 2,
-                        opacity: 0.9
-                    },
-                    repulse: {
-                        distance: 200,
-                        duration: 0.4
-                    },
-                    push: {
-                        particles_nb: 4
-                    },
-                    remove: {
-                        particles_nb: 2
-                    }
-                }
-            },
-            retina_detect: true
+    // Close anime detail overlay
+    if (closeDetailBtn) {
+        closeDetailBtn.addEventListener('click', () => {
+            animeDetailOverlay.classList.remove('active');
+            document.body.style.overflow = ''; // Restore body scrolling
         });
     }
 
+    // Close overlay when clicking outside the content
+    if (animeDetailOverlay) {
+        animeDetailOverlay.addEventListener('click', (event) => {
+            if (event.target === animeDetailOverlay) {
+                animeDetailOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
 
-    // Custom Cursor Tracker - Remove the JS logic for the cursor
-    // The cursor element is still in HTML/CSS, but the movement tracking is removed.
-    // If you want the cursor element completely gone, remove the <div class="cursor"></div> from HTML and the .cursor rule from CSS.
-    // const customCursor = document.querySelector('.cursor');
-    // if (customCursor) {
-    //     document.addEventListener('mousemove', (e) => {
-    //         customCursor.style.left = e.pageX + 'px';
-    //         customCursor.style.top = e.pageY + 'px';
-    //     });
-    // }
+    // Function to handle search input
+    const handleSearch = (searchInput, searchResultsContainer, allAnime) => {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+            const query = searchInput.value.toLowerCase();
+            const filteredAnime = allAnime.filter(anime =>
+                anime.title.toLowerCase().includes(query) ||
+                anime.genre.toLowerCase().includes(query)
+            );
+            if (query.length > 0) {
+                searchResultsContainer.style.display = 'grid'; // Ensure grid display for search results
+                renderCards(filteredAnime, searchResultsContainer, true); // Pass true for isSearch
+            } else {
+                searchResultsContainer.innerHTML = '';
+                searchResultsContainer.style.display = 'none'; // Hide if no query
+            }
+        }, 300); // Debounce time
+    };
+
+    // Initialize Page Content
+    const initializePage = async () => {
+        allAnimeData = await fetchAndEnrichAnime();
+
+        // **NEW: Add 'search-results-grid' class to search result containers**
+        if (searchResultsIndex) {
+            searchResultsIndex.classList.add("search-results-grid");
+        }
+        if (searchResultsAnime) {
+            searchResultsAnime.classList.add("search-results-grid");
+        }
+        if (searchResultsOngoing) {
+            searchResultsOngoing.classList.add("search-results-grid");
+        }
+
+        // Home Page (index.html)
+        if (animeGridIndex) {
+            const popularAnime = allAnimeData.filter(anime => anime.category === "Popular");
+            renderCards(popularAnime, animeGridIndex);
+            if (searchInputIndex) {
+                searchInputIndex.addEventListener('input', () => handleSearch(searchInputIndex, searchResultsIndex, allAnimeData));
+            }
+            if (searchInputMobileIndex) {
+                searchInputMobileIndex.addEventListener('input', () => handleSearch(searchInputMobileIndex, searchResultsIndex, allAnimeData));
+            }
+        }
+
+        // Ongoing Page (ongoing.html)
+        if (animeGridOngoing) {
+            const ongoingAnime = allAnimeData.filter(anime => anime.category === "Ongoing");
+            renderCards(ongoingAnime, animeGridOngoing);
+            if (searchInputOngoing) {
+                searchInputOngoing.addEventListener('input', () => handleSearch(searchInputOngoing, searchResultsOngoing, allAnimeData));
+            }
+            if (searchInputOngoingMobile) {
+                searchInputOngoingMobile.addEventListener('input', () => handleSearch(searchInputOngoingMobile, searchResultsOngoing, allAnimeData));
+            }
+        }
+
+        // Anime Page (anime.html)
+        if (animeGridAnime) {
+            renderCards(allAnimeData, animeGridAnime); // Render all anime
+            if (searchInputAnime) {
+                searchInputAnime.addEventListener('input', () => handleSearch(searchInputAnime, searchResultsAnime, allAnimeData));
+            }
+            if (searchInputAnimeMobile) {
+                searchInputAnimeMobile.addEventListener('input', () => handleSearch(searchInputAnimeMobile, searchResultsAnime, allAnimeData));
+            }
+        }
+
+        // Particles.js initialization for main and footer
+        if (typeof particlesJS !== 'undefined') {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                    "color": { "value": "#00ffff" },
+                    "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 }, "image": { "src": "img/github.svg", "width": 100, "height": 100 } },
+                    "opacity": { "value": 0.5, "random": false, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } },
+                    "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } },
+                    "line_linked": { "enable": true, "distance": 150, "color": "#00ffff", "opacity": 0.4, "width": 1 },
+                    "move": { "enable": true, "speed": 6, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } }
+                },
+                "interactivity": {
+                    "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                    "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } }, "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 },
+                    "push": { "particles_nb": 2 }, "remove": { "particles_nb": 1 }
+                    }
+                },
+                "retina_detect": true
+            });
+
+            particlesJS('particles-js-footer', {
+                "particles": {
+                    "number": { "value": 50, "density": { "enable": true, "value_area": 800 } },
+                    "color": { "value": "#00ffff" },
+                    "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 }, "image": { "src": "img/github.svg", "width": 100, "height": 100 } },
+                    "opacity": { "value": 0.5, "random": false, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } },
+                    "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } },
+                    "line_linked": { "enable": true, "distance": 150, "color": "#00ffff", "opacity": 0.4, "width": 1 },
+                    "move": { "enable": true, "speed": 6, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } }
+                },
+                "interactivity": {
+                    "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                    "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } }, "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 },
+                    "push": { "particles_nb": 2 },
+                    "remove": { "particles_nb": 1 }
+                    }
+                },
+                "retina_detect": true
+            });
+        }
+    };
 
 
     // Scroll to Top Button functionality
@@ -386,12 +279,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Scroll to top when the button is clicked
-    scrollToTopBtn.addEventListener("click", () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth" // Smooth scrolling animation
+    if (scrollToTopBtn) {
+        scrollToTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth" // Smooth scrolling animation
+            });
         });
-    });
+    }
+
 
     // --- Mobile Menu Toggle Functionality ---
     const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
@@ -399,9 +295,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (mobileMenuIcon && mobileMenu) {
         mobileMenuIcon.addEventListener('click', () => {
-            mobileMenu.classList.toggle('is-open');
+            mobileMenu.classList.toggle('active');
         });
-    } else {
-        console.warn("Mobile menu icon or container not found.");
+
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
     }
+
+    initializePage(); // Call the main initialization function
 });
+
+// EmailJS setup for contact form (if applicable)
+(function() {
+    // Only initialize EmailJS if the form exists on the current page
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        emailjs.init("M9Dzs6ZXnABSforwB"); // Replace with your actual EmailJS User ID
+
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formStatus = document.getElementById('form-status');
+            formStatus.style.display = 'block';
+            formStatus.style.color = '#00ffff';
+            formStatus.textContent = 'Sending message...';
+
+            emailjs.sendForm('service_v9001qu', 'template_d66w1h7', this) // Replace with your Service ID and Template ID
+                .then(function() {
+                    formStatus.textContent = 'Message sent successfully!';
+                    formStatus.style.color = 'lightgreen';
+                    contactForm.reset();
+                }, function(error) {
+                    formStatus.textContent = 'Failed to send message. Please try again.';
+                    formStatus.style.color = 'red';
+                    console.error('FAILED...', error);
+                });
+        });
+    }
+})();
